@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Obsidian
+Exec=$HOME/bin/Obsidian.AppImage
+Icon=obsidian
+Terminal=false
+MimeType=x-scheme-handler/obsidian;

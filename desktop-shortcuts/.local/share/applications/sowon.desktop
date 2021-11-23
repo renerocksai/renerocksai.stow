@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+TryExec=$HOME/bin/sowon
+Exec=$HOME/bin/sowon
+Icon=$HOME/.local/share/applications/alacritty.png
+Terminal=false
+Categories=None;
+
+Name=Sowon
+GenericName=Sowon
+Comment=sooon
+StartupWMClass=Sowon
+Actions=New;
+
+[Desktop Action New]
+Name=New Sowon
+Exec=$HOME/bin/sowon

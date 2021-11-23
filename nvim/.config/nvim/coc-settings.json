@@ -1,0 +1,21 @@
+{
+"languageserver": {
+    "godot": {
+      "host": "127.0.0.1",
+      "filetypes": ["gd", "gdscript"],
+      "port": 6008
+    },
+    "zls" : {
+      "command": "/home/rs/bin/zls",
+      "filetypes": ["zig"]
+    },
+    "solidity": {
+            "command": "/home/rs/bin/solang-linux",
+            "args": [ "--language-server" ],
+            "trace.server": "verbose",
+            "rootPatterns": [".git/"],
+            "filetypes": ["solidity"]
+        }
+  },
+  "clangd.path": "/home/rs/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
+}

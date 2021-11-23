@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Godot
+Exec=$HOME/bin/Godot_v3.2.3-stable_x11.64
+Icon=godot
+Terminal=false
