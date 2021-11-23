@@ -21,18 +21,11 @@ Plugin 'machakann/vim-highlightedyank'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'gruvbox-community/gruvbox'
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'Tagbar'
 Plugin 'qpkorr/vim-bufkill'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plugin 'junegunn/fzf.vim'
 
 Plugin 'fatih/vim-go'
-"Plugin 'jremmen/vim-ripgrep'
-"Plugin 'lambdalisue/gina.vim'
-"
+
 " dart plus lsp
 Plugin 'dart-lang/dart-vim-plugin'
 " we replace it by coc Plugin 'natebosch/vim-lsc'
@@ -40,14 +33,9 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'neoclide/coc.nvim'
 Plugin 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
-
 " tmux integration
 Plugin 'benmills/vimux'
 Plugin 'roxma/vim-tmux-clipboard'
-
-" pandoc
-"Plugin 'vim-pandoc/vim-pandoc'
-"lugin 'vim-pandoc/vim-pandoc-syntax' 
 
 Plugin 'stevearc/vim-arduino'
 
@@ -60,6 +48,7 @@ Plugin 'nvim-lua/popup.nvim'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 
+" solidity
 Plugin 'tomlion/vim-solidity'
 
 "Firenvim
@@ -71,13 +60,14 @@ Plugin 'xiyaowong/telescope-emoji.nvim'
 
 " telekasten.nvim 
 Plugin 'renerocksai/telekasten.nvim'
+Plugin 'mattn/calendar-vim'
 
 " lua dev
 Plugin 'rafcamlet/nvim-luapad'
 Plugin 'euclidianAce/BetterLua.vim'
 
+" comments
 Plugin 'numToStr/Comment.nvim'
-Plugin 'mattn/calendar-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -125,6 +115,12 @@ autocmd FileType asm set syntax=rrisc
 :tnoremap <C-k> <C-\><C-n><C-W>k
 :tnoremap <C-h> <C-\><C-n><C-W>h
 :tnoremap <C-l> <C-\><C-n><C-W>l
+
+" resize windows via wasd keys if mouse cannot dig it 
+nnoremap <silent> <Leader>j :exe "resize +5" <CR>
+nnoremap <silent> <Leader>k :exe "resize -5" <CR>
+nnoremap <silent> <Leader>l :exe "vertical resize +5" <CR>
+nnoremap <silent> <Leader>h :exe "vertical resize -5" <CR>
 """"""""""""""""""""""""""""""""""""""""""
 set mouse=a
 
@@ -154,15 +150,17 @@ command Vterm :vertical term
 set splitright
 set splitbelow
 set bs=2
-
+set autowrite
 let mapleader = ","
 
-set autowrite
+" Quickfix list
 map <C-n> :cnext<CR>
 map <C-b> :cprevious<CR>
 map <leader>b :make<CR>
 map <C-c> :copen<CR>
 nnoremap <leader>c :cclose<CR>
+
+" GO
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
@@ -177,22 +175,6 @@ let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 set completeopt-=preview
-
-" fzf stuff
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-nnoremap <c-p> :ProjectFiles <CR>
-
-map <leader>F :Telescope live_grep<CR> 
-
-" resize windows via wasd keys if mouse cannot dig it 
-nnoremap <silent> <Leader>j :exe "resize +5" <CR>
-nnoremap <silent> <Leader>k :exe "resize -5" <CR>
-nnoremap <silent> <Leader>l :exe "vertical resize +5" <CR>
-nnoremap <silent> <Leader>h :exe "vertical resize -5" <CR>
-
 
 "enable visual bell
 :set vb
@@ -210,7 +192,6 @@ let g:lsc_auto_map = { 'defaults': v:true, 'PreviousReference': '<leader>p' }
 let g:dart_style_guide = 2
 
 " VIM's built-in netrw (explorer: VExplore / SExplore)
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
