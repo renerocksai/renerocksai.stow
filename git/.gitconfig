@@ -16,5 +16,3 @@
 [push]
 	default = matching
 
-[credential]
-	helper = !git-credential-1password

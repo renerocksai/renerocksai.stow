@@ -65,9 +65,12 @@ Plugin 'mattn/calendar-vim'
 " lua dev
 Plugin 'rafcamlet/nvim-luapad'
 Plugin 'euclidianAce/BetterLua.vim'
+Plugin 'ckipp01/stylua-nvim'
 
 " comments
 Plugin 'numToStr/Comment.nvim'
+
+Plugin 'iamcco/markdown-preview.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -100,6 +103,8 @@ autocmd FileType dart set tabstop=2|set shiftwidth=2|set expandtab| set ai
 autocmd FileType pov set syntax=rrisc 
 autocmd FileType asm set syntax=rrisc 
 
+let mapleader = ","
+
 """"""""""""""""""""""""""""""""""""""""""
 :nnoremap <C-j> <C-W>j
 :nnoremap <C-k> <C-W>k
@@ -122,6 +127,7 @@ nnoremap <silent> <Leader>k :exe "resize -5" <CR>
 nnoremap <silent> <Leader>l :exe "vertical resize +5" <CR>
 nnoremap <silent> <Leader>h :exe "vertical resize -5" <CR>
 """"""""""""""""""""""""""""""""""""""""""
+
 set mouse=a
 
 if !has('nvim')
@@ -151,11 +157,10 @@ set splitright
 set splitbelow
 set bs=2
 set autowrite
-let mapleader = ","
 
 " Quickfix list
 map <C-n> :cnext<CR>
-map <C-b> :cprevious<CR>
+map <C-p> :cprevious<CR>
 map <leader>b :make<CR>
 map <C-c> :copen<CR>
 nnoremap <leader>c :cclose<CR>
@@ -386,14 +391,13 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 
 :tnoremap <leader><Esc> <C-\><C-n>
 
-":set colorcolumn=120
+:set colorcolumn=120
 
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <C-p> <cmd>Telescope find_files<cr>
 
 lua << END
 require('telescope').setup({
@@ -411,17 +415,20 @@ require('telescope').setup({
 print("Telescope is configured")
 END
 
+" Comment.nvim
+lua require('Comment').setup()
+
 " Telekasten
 lua << END
 require('telekasten').setup({
      home         = vim.fn.expand("~/zettelkasten"),
      extension    = ".md",
+     image_subdir = nil,
+     image_link_style = "markdown",
 })
 END
 
-" Comment.nvim
-lua require('Comment').setup()
-
+autocmd filetype markdown set tw=120
 nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
 nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
@@ -431,6 +438,9 @@ nnoremap <leader>zw :lua require('telekasten').find_weekly_notes()<CR>
 nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
 nnoremap <leader>zy :lua require('telekasten').yank_notelink()<CR>
 nnoremap <leader>zc :lua require('telekasten').show_calendar()<CR>
+nnoremap <leader>zi :lua require('telekasten').paste_img_and_link()<CR>
+
+noremap <leader>p :MarkdownPreviewToggle<CR>
 
 hi tklink ctermfg=72 cterm=bold,underline
 hi tkBrackets ctermfg=gray
@@ -482,4 +492,10 @@ inoremap <leader><leader>O Ö
 inoremap <leader><leader>U Ü
 inoremap <leader><leader>s ß
 inoremap <leader>lg LG<CR>Rene<CR><CR>_________________________________________________________________________<CR>
+
+" lua nvim coding
+autocmd filetype lua setlocal makeprg=luacheck
+autocmd filetype lua command Check make --no-color .
+autocmd filetype lua command! Format lua require("stylua-nvim").format_file()
+autocmd filetype lua command! FormatLua lua require("stylua-nvim").format_file()
 
