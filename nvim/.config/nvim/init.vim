@@ -60,7 +60,8 @@ Plugin 'xiyaowong/telescope-emoji.nvim'
 
 " telekasten.nvim 
 Plugin 'renerocksai/telekasten.nvim'
-Plugin 'mattn/calendar-vim'
+Plugin 'renerocksai/calendar-vim'
+"Plugin 'mattn/calendar-vim'
 
 " lua dev
 Plugin 'rafcamlet/nvim-luapad'
@@ -153,7 +154,7 @@ endif
 command Term :term ++curwin
 command Vterm :vertical term
 
-set splitright
+"set splitright
 set splitbelow
 set bs=2
 set autowrite
@@ -420,11 +421,47 @@ lua require('Comment').setup()
 
 " Telekasten
 lua << END
+local home = vim.fn.expand('~/zettelkasten')
 require('telekasten').setup({
-     home         = vim.fn.expand("~/zettelkasten"),
-     extension    = ".md",
-     image_subdir = nil,
-     image_link_style = "markdown",
+	home = home,
+	dailies = home .. "/" .. "daily",
+	weeklies = home .. "/" .. "weekly",
+	templates = home .. "/" .. "templates",
+
+	-- image subdir for pasting
+	-- subdir name
+	-- or nil if pasted images shouldn't go into a special subdir
+	image_subdir = nil,
+
+	-- markdown file extension
+	extension = ".md",
+
+	-- following a link to a non-existing note will create it
+	follow_creates_nonexisting = true,
+	dailies_create_nonexisting = true,
+	weeklies_create_nonexisting = true,
+
+	-- templates for new notes
+	template_new_note = home .. "/" .. "templates/new_note.md",
+	template_new_daily = home .. "/" .. "templates/daily_tk.md",
+	template_new_weekly = home .. "/" .. "templates/weekly_tk.md",
+
+	-- image link style
+	-- wiki:     ![[image name]]
+	-- markdown: ![](image_subdir/xxxxx.png)
+	image_link_style = "markdown",
+
+	-- integrate with calendar-vim
+	plug_into_calendar = true,
+	calendar_opts = {
+		-- calendar week display mode: 1 .. 'WK01', 2 .. 'WK 1', 3 .. 'KW01', 4 .. 'KW 1', 5 .. '1'
+		weeknm = 4,
+		-- use monday as first day of week: 1 .. true, 0 .. false
+		calendar_monday = 1,
+		-- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
+		calendar_mark = "left-fit",
+	},
+    debug = true,
 })
 END
 
@@ -438,7 +475,9 @@ nnoremap <leader>zw :lua require('telekasten').find_weekly_notes()<CR>
 nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
 nnoremap <leader>zy :lua require('telekasten').yank_notelink()<CR>
 nnoremap <leader>zc :lua require('telekasten').show_calendar()<CR>
+nnoremap <leader>zC :CalendarT<CR>
 nnoremap <leader>zi :lua require('telekasten').paste_img_and_link()<CR>
+nnoremap <leader>zt :lua require('telekasten').toggle_todo()<CR>
 
 noremap <leader>p :MarkdownPreviewToggle<CR>
 
@@ -450,8 +489,7 @@ hi tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold
 " note: we don't do this anymore - maybe it makes sense to limit to markdown
 " mode
 inoremap <leader>[ <ESC>:lua require('telekasten').insert_link()<CR>
-inoremap <leader>zt - [ ] 
-inoremap <leader>zd - [x] 
+inoremap <leader>zt :lua require('telekasten').toggle_todo()<CR>
 
 " fugitive
 nnoremap <leader>gg :G<CR>
