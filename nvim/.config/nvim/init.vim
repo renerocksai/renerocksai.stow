@@ -71,7 +71,9 @@ Plugin 'ckipp01/stylua-nvim'
 " comments
 Plugin 'numToStr/Comment.nvim'
 
+" markdown
 Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'mzlogin/vim-markdown-toc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -461,7 +463,7 @@ require('telekasten').setup({
 		-- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
 		calendar_mark = "left-fit",
 	},
-    debug = true,
+    debug = false,
 })
 END
 
@@ -488,8 +490,8 @@ hi tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold
 " note: we define [[ in **insert mode** to call insert link
 " note: we don't do this anymore - maybe it makes sense to limit to markdown
 " mode
-inoremap <leader>[ <ESC>:lua require('telekasten').insert_link()<CR>
-inoremap <leader>zt :lua require('telekasten').toggle_todo()<CR>
+inoremap <leader>[ <ESC>:lua require('telekasten').insert_link({i = true})<CR>
+inoremap <leader>zt <ESC>:lua require('telekasten').toggle_todo({i = true})<CR>
 
 " fugitive
 nnoremap <leader>gg :G<CR>
