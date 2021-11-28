@@ -75,6 +75,9 @@ Plugin 'numToStr/Comment.nvim'
 Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'mzlogin/vim-markdown-toc'
 
+" harpoon
+Plugin 'ThePrimeagen/harpoon'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -396,6 +399,21 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 
 :set colorcolumn=120
 
+" harpoon
+:lua << END
+require("harpoon").setup({
+    global_settings = {
+        save_on_toggle = false,
+        save_on_change = true,
+        enter_on_sendcmd = false,
+        tmux_autoclose_windows = false,
+        excluded_filetypes = { "harpoon" }
+    },
+    -- ... your other configs ...
+})
+END
+
+
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -415,6 +433,10 @@ require('telescope').setup({
   },
   -- other configuration values here
 })
+
+-- harpoon 
+require("telescope").load_extension('harpoon')
+
 print("Telescope is configured")
 END
 
@@ -538,4 +560,18 @@ autocmd filetype lua setlocal makeprg=luacheck
 autocmd filetype lua command Check make --no-color .
 autocmd filetype lua command! Format lua require("stylua-nvim").format_file()
 autocmd filetype lua command! FormatLua lua require("stylua-nvim").format_file()
+
+" harpoon mappings
+"
+" left index finger
+nnoremap <space><space>f :lua require("harpoon.ui").toggle_quick_menu()<CR>
+" lift the finger to do sth 'dangerous'
+nnoremap <space><space>g :lua require("harpoon.mark").add_file()<CR>
+"
+" right home row, no finger lifting required
+nnoremap <space><space>j :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <space><space>k :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <space><space>l :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <space><space>; :lua require("harpoon.ui").nav_file(4)<CR>
+
 
