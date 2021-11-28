@@ -76,7 +76,7 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'mzlogin/vim-markdown-toc'
 
 " harpoon
-Plugin 'ThePrimeagen/harpoon'
+Plugin 'renerocksai/harpoon'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
