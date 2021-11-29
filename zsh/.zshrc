@@ -157,3 +157,5 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(starship init zsh)"

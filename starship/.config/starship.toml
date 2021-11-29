@@ -1,0 +1,83 @@
+# Füge eine Leerzeile zwischen den Eingabeaufforderungen ein
+add_newline = true
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+# [package]
+# symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
+
+
+# Ersetze das "❯" Symbol der Eingabeaufforderung mit "➜"
+[character]                            # Der Name des Moduls, welches wir konfigurieren ist "character"
+success_symbol = "[➜](bold green)"     # Das "succes_symbol" Segment wird zu "➜" eingestellt und ist "bold green" (fettgedrucktes grün) gefärbt
+
+# Deaktiviere das "package" Modul, damit es aus der Eingabeaufforderung komplett verschwindet
+[package]
+disabled = true

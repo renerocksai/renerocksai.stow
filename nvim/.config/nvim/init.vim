@@ -47,6 +47,8 @@ Plugin 'eemed/sitruuna.vim'
 Plugin 'nvim-lua/popup.nvim'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
+Plugin 'nvim-telescope/telescope-media-files.nvim'
+Plugin 'kyazdani42/nvim-web-devicons'
 
 " solidity
 Plugin 'tomlion/vim-solidity'
@@ -419,8 +421,11 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fm <cmd>Telescope man_pages<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 
 lua << END
+-- harpoon
 require('telescope').setup({
   defaults = {
     layout_config = {
@@ -432,10 +437,15 @@ require('telescope').setup({
     winblend=0,
   },
   -- other configuration values here
+  extensions = {
+      media_files = {
+        find_cmd = 'rg',
+      },
+  },
 })
 
--- harpoon 
 require("telescope").load_extension('harpoon')
+require("telescope").load_extension('media_files')
 
 print("Telescope is configured")
 END
@@ -494,7 +504,7 @@ nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
 nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
 nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
-nnoremap <leader>zt :lua require('telekasten').goto_today()<CR>
+nnoremap <leader>zT :lua require('telekasten').goto_today()<CR>
 nnoremap <leader>zw :lua require('telekasten').find_weekly_notes()<CR>
 nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
 nnoremap <leader>zy :lua require('telekasten').yank_notelink()<CR>
