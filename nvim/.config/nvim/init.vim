@@ -20,6 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'gruvbox-community/gruvbox'
+Plugin 'sainnhe/gruvbox-material.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Tagbar'
 Plugin 'qpkorr/vim-bufkill'
@@ -48,6 +49,7 @@ Plugin 'nvim-lua/popup.nvim'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 Plugin 'nvim-telescope/telescope-media-files.nvim'
+Plugin 'nvim-telescope/telescope-symbols.nvim'
 Plugin 'kyazdani42/nvim-web-devicons'
 
 " solidity
@@ -79,6 +81,8 @@ Plugin 'mzlogin/vim-markdown-toc'
 
 " harpoon
 Plugin 'renerocksai/harpoon'
+
+Plugin 'folke/tokyonight.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -156,7 +160,9 @@ endif
 
 "let g:airline_theme='coderene'
 ":colorscheme codedark
-:colorscheme gruvbox
+
+let g:gruvbox_material_background='medium'
+:colorscheme gruvbox-material
 
 command Term :term ++curwin
 command Vterm :vertical term
@@ -395,7 +401,7 @@ hi Search ctermfg=192 ctermbg=199
 " close all buffers but this one
 command! BufOnly silent! execute "%bd|e#|bd#"
 
-:set exrc
+set exrc
 
 :tnoremap <leader><Esc> <C-\><C-n>
 
@@ -428,6 +434,7 @@ lua << END
 -- harpoon
 require('telescope').setup({
   defaults = {
+      cache_picker = false,
     layout_config = {
       vertical = { width = 0.5 },
       -- other layout configuration here
@@ -496,6 +503,18 @@ require('telekasten').setup({
 		calendar_mark = "left-fit",
 	},
     debug = false,
+
+    close_after_yanking = false,
+    insert_after_inserting = true,
+
+    -- make syntax available to markdown buffers and telescope previewers
+    install_syntax = true,
+
+    -- tag notation: '#tag', ':tag:', 'yaml-bare'
+    tag_notation = "#tag",
+
+    -- command palette theme: dropdown (window) or ivy (bottom panel)
+    command_palette_theme = "ivy",
 })
 END
 
@@ -505,24 +524,48 @@ nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
 nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
 nnoremap <leader>zT :lua require('telekasten').goto_today()<CR>
+nnoremap <leader>zW :lua require('telekasten').goto_thisweek()<CR>
 nnoremap <leader>zw :lua require('telekasten').find_weekly_notes()<CR>
 nnoremap <leader>zn :lua require('telekasten').new_note()<CR>
+nnoremap <leader>zN :lua require('telekasten').new_templated_note()<CR>
 nnoremap <leader>zy :lua require('telekasten').yank_notelink()<CR>
 nnoremap <leader>zc :lua require('telekasten').show_calendar()<CR>
 nnoremap <leader>zC :CalendarT<CR>
 nnoremap <leader>zi :lua require('telekasten').paste_img_and_link()<CR>
 nnoremap <leader>zt :lua require('telekasten').toggle_todo()<CR>
+nnoremap <leader>zr :lua require('plenary.reload').reload_module('telekasten')<CR>
+nnoremap <leader>zb :lua require('telekasten').show_backlinks()<CR>
+nnoremap <leader>zF :lua require('telekasten').find_friends()<CR>
+nnoremap <leader>zI :lua require('telekasten').insert_img_link({i = true})<CR>
+nnoremap <leader>zp :lua require('telekasten').preview_img()<CR>
+nnoremap <leader>zm :lua require('telekasten').browse_media()<CR>
+nnoremap <leader>z :lua require('telekasten').panel()<CR>
 
-noremap <leader>p :MarkdownPreviewToggle<CR>
+noremap <leader>P :MarkdownPreviewToggle<CR>
 
-hi tklink ctermfg=72 cterm=bold,underline
-hi tkBrackets ctermfg=gray
-hi tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold
+" autocmd FileType markdown set syntax=telekasten
+
+hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+hi tkBrackets ctermfg=gray guifg=gray
+
+" real yellow
+hi tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
+" gruvbox
+hi tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+
+hi link CalNavi CalRuler
+hi tkTagSep ctermfg=gray guifg=gray
+hi tkTag ctermfg=175 guifg=#d3869B
+
+if has('termguicolors')
+  set termguicolors
+endif
 
 " note: we define [[ in **insert mode** to call insert link
 " note: we don't do this anymore - maybe it makes sense to limit to markdown
 " mode
 inoremap <leader>[ <ESC>:lua require('telekasten').insert_link({i = true})<CR>
+" inoremap [[ <ESC>:lua require('telekasten').insert_link({i = true})<CR>
 inoremap <leader>zt <ESC>:lua require('telekasten').toggle_todo({i = true})<CR>
 
 " fugitive
@@ -551,9 +594,7 @@ let fc['.*'] = { 'takeover': 'never', 'priority': 1 }
 
 " Emojis
 let g:emoji_complete_overwrite_standard_keymaps = 0
-imap eE <Plug>(emoji-start-complete)
-imap <leader><leader>e <Plug>(emoji-start-complete)
-
+lua vim.api.nvim_set_keymap('i', 'eE', '<cmd>Telescope symbols<cr>', {noremap=true})
 
 " Renes awesome umlauts
 inoremap <leader><leader>a ä
@@ -567,7 +608,7 @@ inoremap <leader>lg LG<CR>Rene<CR><CR>__________________________________________
 
 " lua nvim coding
 autocmd filetype lua setlocal makeprg=luacheck
-autocmd filetype lua command Check make --no-color .
+autocmd filetype lua command! Check make --no-color .
 autocmd filetype lua command! Format lua require("stylua-nvim").format_file()
 autocmd filetype lua command! FormatLua lua require("stylua-nvim").format_file()
 
@@ -584,4 +625,17 @@ nnoremap <space><space>k :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <space><space>l :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <space><space>; :lua require("harpoon.ui").nav_file(4)<CR>
 
+" thePrimeagen - inspired
+" greatest remap ever
+xnoremap <leader>p "_dP
+xnoremap <leader>p "y
 
+" next greatest remap ever : asbjornHaland
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+" end of thePrimeagen
+nnoremap <leader>p "+p
