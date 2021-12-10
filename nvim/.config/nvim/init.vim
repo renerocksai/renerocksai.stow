@@ -37,6 +37,7 @@ Plugin 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn buil
 " tmux integration
 Plugin 'benmills/vimux'
 Plugin 'roxma/vim-tmux-clipboard'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'stevearc/vim-arduino'
 
@@ -118,10 +119,10 @@ autocmd FileType asm set syntax=rrisc
 let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""
-:nnoremap <C-j> <C-W>j
-:nnoremap <C-k> <C-W>k
-:nnoremap <C-h> <C-W>h
-:nnoremap <C-l> <C-W>l
+" :nnoremap <C-j> <C-W>j
+" :nnoremap <C-k> <C-W>k
+" :nnoremap <C-h> <C-W>h
+" :nnoremap <C-l> <C-W>l
 
 :inoremap <C-j> <C-\><C-n><C-W>j
 :inoremap <C-k> <C-\><C-n><C-W>k
@@ -639,3 +640,10 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 " end of thePrimeagen
 nnoremap <leader>p "+p
+
+" tmux navigator
+" write all buffers before navigating from vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
