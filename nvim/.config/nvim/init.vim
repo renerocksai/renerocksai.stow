@@ -440,6 +440,7 @@ require('telescope').setup({
       vertical = { width = 0.5 },
       -- other layout configuration here
       horizontal = { preview_width = 0.7, width = 0.9, },
+      prompt_position = "bottom",
     },
     -- other defaults configuration here
     winblend=0,
@@ -541,6 +542,7 @@ nnoremap <leader>zI :lua require('telekasten').insert_img_link({i = true})<CR>
 nnoremap <leader>zp :lua require('telekasten').preview_img()<CR>
 nnoremap <leader>zm :lua require('telekasten').browse_media()<CR>
 nnoremap <leader>z :lua require('telekasten').panel()<CR>
+nnoremap <leader>za :lua require('telekasten').show_tags()<CR>
 
 noremap <leader>P :MarkdownPreviewToggle<CR>
 
@@ -568,6 +570,8 @@ endif
 inoremap <leader>[ <ESC>:lua require('telekasten').insert_link({i = true})<CR>
 " inoremap [[ <ESC>:lua require('telekasten').insert_link({i = true})<CR>
 inoremap <leader>zt <ESC>:lua require('telekasten').toggle_todo({i = true})<CR>
+inoremap <leader># <cmd>lua require('telekasten').show_tags({i = true})<cr>
+
 
 " fugitive
 nnoremap <leader>gg :G<CR>
@@ -646,4 +650,12 @@ nnoremap <leader>p "+p
 let g:tmux_navigator_save_on_switch = 2
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
+
+" search results in the middle
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
+:nnoremap # #zz
+:nnoremap g* g*zz
+:nnoremap g# g#zz
 
