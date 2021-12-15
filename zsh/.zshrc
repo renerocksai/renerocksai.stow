@@ -163,3 +163,5 @@ export PATH="$HOME/gems/bin:$PATH"
 # conda config --set changeps1 False
 
 eval "$(starship init zsh)"
+
+alias luamake=/home/rs/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
