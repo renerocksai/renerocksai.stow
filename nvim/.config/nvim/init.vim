@@ -100,6 +100,8 @@ Plugin 'renerocksai/harpoon'
 
 Plugin 'folke/tokyonight.nvim'
 
+Plugin 'kyazdani42/nvim-tree.lua'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -516,6 +518,8 @@ nnoremap <space><space>k :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <space><space>l :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <space><space>; :lua require("harpoon.ui").nav_file(4)<CR>
 
+nnoremap <space>E :NvimTreeToggle<CR>
+
 " thePrimeagen - inspired
 " greatest remap ever
 xnoremap <leader>p "_dP
@@ -730,7 +734,11 @@ null_ls.setup({
     end
   end,
 })
-
 EOF
 
-
+" lua-tree
+lua << EOF
+local nvt = require('nvim-tree')
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
+nvt.setup({ })
+EOF
