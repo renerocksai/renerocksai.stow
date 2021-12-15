@@ -82,6 +82,7 @@ Plugin 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
 Plugin 'L3MON4D3/LuaSnip' " Snippets plugin
 
 Plugin 'jose-elias-alvarez/null-ls.nvim'
+Plugin 'folke/trouble.nvim'
 
 " lua dev
 Plugin 'rafcamlet/nvim-luapad'
@@ -518,7 +519,8 @@ nnoremap <space><space>k :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <space><space>l :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <space><space>; :lua require("harpoon.ui").nav_file(4)<CR>
 
-nnoremap <space>E :NvimTreeToggle<CR>
+nnoremap <space><space>e :NvimTreeToggle<CR>
+nnoremap <space><space>t :TroubleToggle<CR>
 
 " thePrimeagen - inspired
 " greatest remap ever
@@ -742,3 +744,11 @@ local nvt = require('nvim-tree')
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 nvt.setup({ })
 EOF
+
+" trouble
+lua << EOF
+require('trouble').setup({
+    -- here
+})
+EOF
+
