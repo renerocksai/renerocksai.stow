@@ -83,6 +83,7 @@ Plugin 'L3MON4D3/LuaSnip' " Snippets plugin
 
 Plugin 'jose-elias-alvarez/null-ls.nvim'
 Plugin 'folke/trouble.nvim'
+Plugin 'folke/lsp-colors.nvim'
 
 " lua dev
 Plugin 'rafcamlet/nvim-luapad'
@@ -332,7 +333,7 @@ require('telescope').setup({
       prompt_position = "bottom",
     },
     -- other defaults configuration here
-    winblend=0,
+    winblend=10,
   },
   -- other configuration values here
   extensions = {
@@ -750,5 +751,8 @@ lua << EOF
 require('trouble').setup({
     -- here
 })
+-- just in case we choose a crappy color scheme
+require('lsp-colors').setup({})
 EOF
+
 
