@@ -499,7 +499,6 @@ inoremap <leader><leader>A Ä
 inoremap <leader><leader>O Ö
 inoremap <leader><leader>U Ü
 inoremap <leader><leader>s ß
-inoremap <leader>lg LG<CR>Rene<CR><CR>_________________________________________________________________________<CR>
 
 " lua nvim coding
 autocmd filetype lua setlocal makeprg=luacheck
@@ -648,13 +647,12 @@ cmp.setup ({
       end
     end, { "i", "s" }),
   },
-  sources = cmp.config.sources({
+  sources = {
+    { name = 'path' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-      { name = 'path' },
-  }, {
-  { name = 'buffer' },
-  })
+    { name = 'buffer' },
+  }
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -755,4 +753,5 @@ require('trouble').setup({
 require('lsp-colors').setup({})
 EOF
 
+lua require("renerocksai")
 
