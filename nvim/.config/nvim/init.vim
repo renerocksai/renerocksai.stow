@@ -27,8 +27,6 @@ Plug 'dart-lang/dart-vim-plugin'
 " Plug 'neoclide/coc.nvim'
 " Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
-" flutter and dap
-" Plug 'akinsho/flutter-tools.nvim'
 
 " tmux integration
 Plug 'benmills/vimux'
@@ -107,6 +105,10 @@ Plug 'renerocksai/harpoon'
 Plug 'folke/tokyonight.nvim'
 
 Plug 'kyazdani42/nvim-tree.lua'
+
+
+" flutter and dap
+Plug 'akinsho/flutter-tools.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -856,4 +858,22 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+EOF
+
+" flutter-tools
+lua << EOF
+require("flutter-tools").setup{
+  -- see the debugger section on github - we could enable dap instead of a plenary job!
+  -- widget_guides = false,
+  closing_tags = {
+    highlight = "Comment", -- highlight for the closing tag
+    prefix = ">", -- character to use for close tag e.g. > Widget
+    enabled = true -- set to false to disable
+  },
+  outline = {
+    -- open_cmd = "30vnew", -- command to use to open the outline buffer
+    auto_open = true -- if true this will open the outline automatically when it is first populated
+  },
+} -- use defaults
+require("telescope").load_extension("flutter")
 EOF
