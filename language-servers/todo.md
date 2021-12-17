@@ -1,5 +1,7 @@
 # How to get all the language servers
 
+# this file is deprecated; its contents went into the README
+
 ## Python
 
 pip install -r requirements.txt to get all the python lsp stuff

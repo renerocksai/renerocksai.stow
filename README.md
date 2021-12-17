@@ -4,34 +4,71 @@ Eventually, we will go down the ansible route.
 
 ## Essentials
 
+- binutils
+- build-essential, cmake
+- neovim, [see below](#neovim)
 - git
 - git-crypt
 - stow
 - i3
 - zsh
   - oh-my-zsh
+  - [starship](#starship-prompt)
 - tmux
+- htop
+- ncdu
+- xclip
+- ripgrep
 - zig
 - python
   - anaconda python 3.9 (version checks of some shitty tools fail with 3.10)
-- unzip
+- lua5.1
+  - stylua
+    - via [github](https://github.com/JohnnyMorganz/StyLua) releases or cargo (install first)
+  - luacheck
+    - via apt or luarocks (install first)
+- flutter
+- libasound2-dev
+- mediainfo
+- zip, unzip
+- p7zip
+- rar
+- xz-utils
 
 ### more stuff
 
-- obs
-- latex
-- build-essential, cmake
+- obs-studio
+- texlive
 - sdl2-dev
-- steam
+- steam-installer
 - flameshot
 - discord
 - samba client / utils
+- (audacity)
+- krita
+- cloc
+- docker-ce
+- ffmpeg
+- firefox
+- gcc, g++
+- gimp
+- ghdl, gtkwave
+- imagemagick
+- jq
+- insomnia
+- mongodb-org
+- ninja-tools
+- nodejs
 
 ## neovim
 
-- clone
-- make
-- make install
+See [here](https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source) for more info.
+
+```console
+git clone
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+```
 
 ```console
 pip install neovim

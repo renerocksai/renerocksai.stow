@@ -34,6 +34,12 @@ Plugin 'dart-lang/dart-vim-plugin'
 " Plugin 'neoclide/coc.nvim'
 " Plugin 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
+" flutter and dap
+" Plugin 'akinsho/flutter-tools.nvim'
+
+" dap
+Plugin 'mfussengegger/nvim-dap'
+
 
 " tmux integration
 Plugin 'benmills/vimux'

@@ -42,4 +42,3 @@ ls.snippets = {
 		}),
 	},
 }
-print("loaded")
