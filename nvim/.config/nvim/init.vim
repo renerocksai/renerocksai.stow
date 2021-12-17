@@ -1,129 +1,115 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
 :set laststatus=2
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.config/nvim/data/plugged')
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'machakann/vim-highlightedyank'
-Plugin 'tomasiser/vim-code-dark'
-Plugin 'gruvbox-community/gruvbox'
-Plugin 'sainnhe/gruvbox-material.git'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'Tagbar'
-Plugin 'qpkorr/vim-bufkill'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tomasiser/vim-code-dark'
+Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'flazz/vim-colorschemes'
+Plug 'qpkorr/vim-bufkill'
 
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " dart plus lsp
-Plugin 'dart-lang/dart-vim-plugin'
-" we replace it by coc Plugin 'natebosch/vim-lsc'
-" we replace it by coc  Plugin 'natebosch/vim-lsc-dart'
-" Plugin 'neoclide/coc.nvim'
-" Plugin 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'dart-lang/dart-vim-plugin'
+" we replace it by coc Plug 'natebosch/vim-lsc'
+" we replace it by coc  Plug 'natebosch/vim-lsc-dart'
+" Plug 'neoclide/coc.nvim'
+" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " flutter and dap
-" Plugin 'akinsho/flutter-tools.nvim'
-
-" dap
-Plugin 'mfussengegger/nvim-dap'
-
+" Plug 'akinsho/flutter-tools.nvim'
 
 " tmux integration
-Plugin 'benmills/vimux'
-Plugin 'roxma/vim-tmux-clipboard'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'christoomey/vim-tmux-navigator'
 
-Plugin 'stevearc/vim-arduino'
+Plug 'stevearc/vim-arduino'
 
-Plugin 'habamax/vim-godot'
-Plugin 'ziglang/zig.vim'
-Plugin 'eemed/sitruuna.vim'
+Plug 'habamax/vim-godot'
+Plug 'ziglang/zig.vim'
+Plug 'eemed/sitruuna.vim'
 
 " Telescope
-Plugin 'nvim-lua/popup.nvim'
-Plugin 'nvim-lua/plenary.nvim'
-Plugin 'nvim-telescope/telescope.nvim'
-Plugin 'nvim-telescope/telescope-media-files.nvim'
-Plugin 'nvim-telescope/telescope-symbols.nvim'
-Plugin 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+" the treeshitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" dap
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'rcarriga/nvim-dap-ui'
 
 " solidity
-Plugin 'tomlion/vim-solidity'
+Plug 'tomlion/vim-solidity'
 
 "Firenvim
-Plugin 'glacambre/firenvim'
+Plug 'glacambre/firenvim'
 
 " Emojis
-Plugin 'kyuhi/vim-emoji-complete'
-Plugin 'xiyaowong/telescope-emoji.nvim'
+Plug 'kyuhi/vim-emoji-complete'
+Plug 'xiyaowong/telescope-emoji.nvim'
 
 " telekasten.nvim 
-Plugin 'renerocksai/telekasten.nvim'
-Plugin 'renerocksai/calendar-vim'
-"Plugin 'mattn/calendar-vim'
+Plug 'renerocksai/telekasten.nvim'
+Plug 'renerocksai/calendar-vim'
+"Plug 'mattn/calendar-vim'
 
 " lua and lsp stuff
-Plugin 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
-Plugin 'tjdevries/nlua.nvim'  " TJ's magic stuff
+Plug 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
+Plug 'tjdevries/nlua.nvim'  " TJ's magic stuff
 
-Plugin 'hrsh7th/cmp-buffer'
-Plugin 'hrsh7th/cmp-path'
-Plugin 'hrsh7th/cmp-cmdline'
-Plugin 'hrsh7th/nvim-cmp' " Autocompletion plugin
-Plugin 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
-Plugin 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
-Plugin 'L3MON4D3/LuaSnip' " Snippets plugin
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
+Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
+Plug 'L3MON4D3/LuaSnip' " Snippets plugin
 
-Plugin 'jose-elias-alvarez/null-ls.nvim'
-Plugin 'folke/trouble.nvim'
-Plugin 'folke/lsp-colors.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'folke/lsp-colors.nvim'
 
 " lua dev
-Plugin 'rafcamlet/nvim-luapad'
-Plugin 'euclidianAce/BetterLua.vim'
-Plugin 'ckipp01/stylua-nvim'
+Plug 'rafcamlet/nvim-luapad'
+Plug 'euclidianAce/BetterLua.vim'
+Plug 'ckipp01/stylua-nvim'
 
 " comments
-Plugin 'numToStr/Comment.nvim'
+Plug 'numToStr/Comment.nvim'
 
 " markdown
-Plugin 'iamcco/markdown-preview.nvim'
-Plugin 'mzlogin/vim-markdown-toc'
+Plug 'iamcco/markdown-preview.nvim'
+Plug 'mzlogin/vim-markdown-toc'
 
 " harpoon
-Plugin 'renerocksai/harpoon'
+Plug 'renerocksai/harpoon'
 
-Plugin 'folke/tokyonight.nvim'
+Plug 'folke/tokyonight.nvim'
 
-Plugin 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Initialize plugin system
+call plug#end()
 
 syntax on
 
@@ -201,7 +187,7 @@ set autowrite
 " Quickfix list
 map <C-n> :cnext<CR>
 map <C-p> :cprevious<CR>
-map <leader>b :make<CR>
+" map <leader>b :make<CR>
 map <C-c> :copen<CR>
 nnoremap <leader>c :cclose<CR>
 
@@ -761,3 +747,113 @@ EOF
 
 lua require("renerocksai")
 
+" dap-install
+" lua << EOF
+" local dap_install = require("dap-install")
+"
+" dap_install.setup({
+" 	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+" })
+" EOF
+
+" ------------------------------------------------------------------------------------
+" dap
+" ------------------------------------------------------------------------------------
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+
+" First: set a breakpoint
+nnoremap <silent> <space>db :lua require'dap'.toggle_breakpoint()<CR>
+" start debugging session
+nnoremap <silent> <space>dc :lua require'dap'.continue();<CR>
+" bring up the UI
+nnoremap <silent> <space>dui :lua require('dapui').toggle()<CR>
+" step around
+nnoremap <silent> <space>do :lua require'dap'.step_over()<CR>
+nnoremap <silent> <space>di :lua require'dap'.step_into()<CR>
+nnoremap <silent> <space>dO :lua require'dap'.step_out()<CR>
+
+" other dap stuff
+nnoremap <silent> <space>dB :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <space>dlp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <space>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <space>dl :lua require'dap'.run_last()<CR>
+
+nnoremap <silent> <space>dsc <cmd>lua require"dap.ui.variables".scopes()<CR>
+nnoremap <silent> <space>dhh <cmd>lua require"dap.ui.variables".hover()<CR>
+vnoremap <silent> <space>dhv <cmd>lua require"dap.ui.variables".visual_hover()<CR>
+nnoremap <silent> <space>duh <cmd>lua require"dap.ui.widgets".hover()<CR>
+nnoremap <silent> <space>duf <cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
+
+" telescope-dap
+nnoremap <silent><space>dcc <cmd>lua require"telescope".extensions.dap.commands{}<CR>
+nnoremap <silent><space>dco <cmd>lua require"telescope".extensions.dap.configurations{}<CR>
+nnoremap <silent><space>dlb <cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>
+nnoremap <silent><space>dv  <cmd>lua require"telescope".extensions.dap.variables{}<CR>
+nnoremap <silent><space>df  <cmd>lua require"telescope".extensions.dap.frames{}<CR>
+
+lua << EOF
+
+-- the python adapter
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  command = '/home/rs/bin/debugpy/bin/python';  -- will this be expanded?
+  args = { '-m', 'debugpy.adapter' };
+}
+
+-- the configuration
+-- local dap = require('dap')
+dap.configurations.python = {
+  {
+    -- The first three options are required by nvim-dap
+    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+    request = 'launch';
+    name = "Launch file";
+
+    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+    program = "${file}"; -- This configuration will launch the current file if used.
+    pythonPath = function()
+      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+      local cwd = vim.fn.getcwd()
+      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+        return cwd .. '/venv/bin/python'
+      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+        return cwd .. '/.venv/bin/python'
+      else
+        return '/home/rs/anaconda3/bin/python'
+      end
+    end;
+  },
+}
+
+-- the telescope
+require('telescope').load_extension('dap')
+-- the virtual text
+require("nvim-dap-virtual-text").setup()
+-- nvim-dap-ui
+require("dapui").setup()
+EOF
+
+" treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF

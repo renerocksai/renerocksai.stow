@@ -96,6 +96,19 @@ $ cd language-servers
 $ pip install -r requirements.txt 
 ```
 
+#### Debugging Python
+
+```console
+./bin/installers/install_debugpy.sh
+```
+
+The rest is in the nvim config.
+
+**Note**: anaconda comes with `debugpy` already! So you might want to change the nvim
+dap configuration to use the default (anaconda) debugpy.
+
+**Note**: Check the `dap.configurations.python`: there you can see how venvs are loaded, etc.
+
 ### lua
 
 - Execute `~/.config/nvim/bundle/nlua.nvim/scripts/download_sumneko.lua via`
@@ -117,6 +130,12 @@ Download the zig language server from github and unpack it in ~/bin/
 ```console
 sudo npm install -g markdownlint-cli
 ```
+
+## Debugging
+
+There is some really good stuff in the [Neovim DAP Enhanced](https://alpha2phi.medium.com/neovim-dap-enhanced-ebc730ff498b) article, which I used for pimping my DAP stuff.
+
+Check it out, it recommends using DAPInstall for additional languages.
 
 ## starship prompt
 
