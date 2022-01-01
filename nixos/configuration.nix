@@ -128,6 +128,9 @@
     smbclient
     audacity
     
+    # kicad  # !!! needs more disk space
+    freecad
+
     # maybe later
     # steam
     # mongodb
