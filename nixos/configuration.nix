@@ -69,7 +69,7 @@
   users.users.rs = {
     initialPassword = "rs";
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -118,6 +118,20 @@
     # ]))
 
     google-chrome
+
+    obs-studio 
+    SDL2
+    krita
+    cloc
+
+    texlive.combined.scheme-medium
+    smbclient
+    audacity
+    
+    # maybe later
+    # steam
+    # mongodb
+    # insomnia
   ];
 
   # rene nvim nightly
@@ -151,7 +165,14 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = true;   # for now
+    permitRootLogin = "no";
+    #challengeResponseAuthentication = false; # or "yes" or "no"??
+  };
+
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
