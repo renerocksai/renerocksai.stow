@@ -159,9 +159,11 @@ export PATH="$HOME/gems/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rene deactivate conda messing with the prompt
-# run this once: 
+# run this once:
 # conda config --set changeps1 False
 
 eval "$(starship init zsh)"
 
 alias luamake=/home/rs/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+
+alias conda-shell="conda-shell -c zsh"
