@@ -46,7 +46,7 @@
   services.xserver.enable = true;
 
 
-  # Enable the Plasma 5 Desktop Environment.
+  # Enable the Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;  # kde default dm
   services.xserver.windowManager.i3.enable = true;
   
