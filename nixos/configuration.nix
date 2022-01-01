@@ -128,8 +128,10 @@
     smbclient
     audacity
     
-    # kicad  # !!! needs more disk space
+    kicad  # !!! needs more disk space
     freecad
+
+    zls
 
     # maybe later
     # steam
