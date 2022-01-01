@@ -96,7 +96,7 @@ Plug 'ckipp01/stylua-nvim'
 Plug 'numToStr/Comment.nvim'
 
 " markdown
-Plug 'iamcco/markdown-preview.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'mzlogin/vim-markdown-toc'
 
 " harpoon
@@ -566,7 +566,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -689,6 +689,7 @@ require('nlua.lsp.nvim').setup(lspconfig, {
 
     globals = {
         -- extra globals would go here
+        "os"
     }
 })
 
@@ -715,7 +716,7 @@ local fmt = null_ls.builtins.formatting
 null_ls.setup({
   sources = {
     fmt.trim_whitespace.with({
-      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua" },
+      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua", "markdown", "telekasten" },
     }),
     fmt.black,
     fmt.stylua,
