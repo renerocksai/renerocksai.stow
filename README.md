@@ -27,6 +27,7 @@ Eventually, we will go down the ansible route.
     - via [github](https://github.com/JohnnyMorganz/StyLua) releases or cargo (install first)
   - luacheck
     - via apt or luarocks (install first)
+    - on nixos: done automatically
 - flutter
 - libasound2-dev
 - mediainfo
@@ -93,8 +94,11 @@ nvim --headless "+call firenvim#install(0) | q"
 $ cd language-servers
 
 # to get all the python lsp stuff
-$ pip install -r requirements.txt 
+$ pip install -r requirements.txt
 ```
+
+on nixos, do this in a conda env and use the conda env when editing python files. if entering a conda env is too much
+work, then use `bin/pylsp.sh` as language server (rename it to pylsp).
 
 #### Debugging Python
 
@@ -131,6 +135,8 @@ Download the zig language server from github and unpack it in ~/bin/
 sudo npm install -g markdownlint-cli
 ```
 
+on nixos, this is done automatically
+
 ## Debugging
 
 There is some really good stuff in the [Neovim DAP Enhanced](https://alpha2phi.medium.com/neovim-dap-enhanced-ebc730ff498b) article, which I used for pimping my DAP stuff.
@@ -142,3 +148,5 @@ Check it out, it recommends using DAPInstall for additional languages.
 ```console
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 ```
+
+on nixos, this is done automatically
