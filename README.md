@@ -54,6 +54,7 @@ Eventually, we will go down the ansible route.
 - gcc, g++
 - gimp
 - ghdl, gtkwave
+- kicad, freecad
 - imagemagick
 - jq
 - insomnia
