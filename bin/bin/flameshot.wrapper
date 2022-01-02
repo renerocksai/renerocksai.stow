@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [ ! -d $HOME/Pictures ] ; then
+    mkdir $HOME/Pictures
+fi
+flameshot $*
+

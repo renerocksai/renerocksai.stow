@@ -55,7 +55,17 @@ then git-uncrypt the stow (and zk) repos
 stow ssh
 chmod all ./ssh/* to 600
 
+## firenvim
+
+Run firenvim install if necessary:
+
+```console
+nvim --headless "+call firenvim#install(0) | q"
+```
+
 ## nixos
+
+Make sure we keep tracking changes
 
 ```console
 cd /etc/nixos

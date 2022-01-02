@@ -191,8 +191,8 @@ bar {
 
 # rene
 # does not seem to work: bindsym --release $mod+Print exec /usr/bin/flameshot gui
-bindsym --release $mod+p exec /usr/bin/flameshot gui
-bindsym --release $mod+Shift+p exec /usr/bin/flameshot full -p ~/Pictures/
+bindsym --release $mod+p exec /home/rs/bin/flameshot.wrapper gui
+bindsym --release $mod+Shift+p exec /home/rs/bin/flameshot.wrapper full -p ~/Pictures/
 
 # since win+l is used, take win+ctrl+l for lock
 bindsym --release $mod+control+l exec i3lock -e -c 000000

@@ -1,6 +1,8 @@
 # What to install
 
-Eventually, we will go down the ansible route.
+I have put all this in a nixos config. See [NixOS](nixos.md) for how I install my system.
+
+Eventually, we might go down the ansible route.
 
 ## Essentials
 
@@ -35,6 +37,7 @@ Eventually, we will go down the ansible route.
 - p7zip
 - rar
 - xz-utils
+- real-prog-qwerty
 
 ### more stuff
 

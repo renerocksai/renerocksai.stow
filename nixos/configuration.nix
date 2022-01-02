@@ -132,10 +132,11 @@
     smbclient
     audacity
     
-    kicad  # !!! needs more disk space
+    kicad
     freecad
 
-    zls
+    zig zls 
+    gnome.zenity # for slides to launch outside of nix-shell
 
     # maybe later
     # steam
