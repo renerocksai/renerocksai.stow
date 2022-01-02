@@ -53,7 +53,11 @@
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.extraLayouts.real-prog-qwerty = {
+    description = "Real Programmer's QWERTY";
+    languages = [ "eng" ];
+    symbolsFile = /etc/nixos/xkb/symbols/real-prog-qwerty;
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
