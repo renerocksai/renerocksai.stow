@@ -80,4 +80,4 @@ dap stuff in vim. not important, I hardly ever debug. will look into when more t
 # issues
 
 - [x] no helpfiles in nvim!!! --> `:helptags ALL` fixes it!
-- [ ] paths in i3config : flameshot
+- [x] paths in i3config : flameshot
