@@ -5,6 +5,15 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# gaps
+for_window [class=.*] border bixel 0
+gaps inner 20
+gaps outer 0
+
+smart_gaps on
+smart_borders on
+hide_edge_borders smart_no_gaps
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!

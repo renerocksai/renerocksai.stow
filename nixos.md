@@ -81,3 +81,57 @@ dap stuff in vim. not important, I hardly ever debug. will look into when more t
 
 - [x] no helpfiles in nvim!!! --> `:helptags ALL` fixes it!
 - [x] paths in i3config : flameshot
+
+# stuff for later
+
+stuff to try out I found on the internets
+
+- uget -- download manager
+- blueman -- bluetooth
+- wirelesstools
+
+- android-studio
+- genymotion -- android emulator
+- openjdk
+- watchman
+
+- steam
+
+## areina
+
+```nix
+  virtualisation.virtualbox.host.enable = true;
+
+  # battery management
+  services.tlp.enable = true;
+
+  environment.pathsToLink = [
+    "/share/xfce4"
+    "/share/themes"
+    "/share/mime"
+    "/share/desktop-directories"
+    "/share/gtksourceview-2.0"
+  ];
+
+  services.xserver.displayManager.sessionCommands = ''
+    # Set GTK_PATH so that GTK+ can find the theme engines.
+    export GTK_PATH="${config.system.path}/lib/gtk-2.0:${config.system.path}/lib/gtk-3.0"
+    # Set GTK_DATA_PREFIX so that GTK+ can find the Xfce themes.
+    export GTK_DATA_PREFIX=${config.system.path}
+    # SVG loader for pixbuf
+    export GDK_PIXBUF_MODULE_FILE=$(echo ${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/*/loaders.cache)
+    # Set XDG menu prefix
+    export XDG_MENU_PREFIX="lxde-"
+  '';
+
+  users.extraUsers.xxx = {
+    # ...
+    extraGroups = ["wheel" "networkmanager" "vboxusers" "docker" ];
+    shell = "/run/current-system/sw/bin/zsh";
+  }
+```
+
+## hardware
+<https://github.com/NixOS/nixos-hardware>
+from
+<https://nixos.wiki/wiki/Configuration_Collection>

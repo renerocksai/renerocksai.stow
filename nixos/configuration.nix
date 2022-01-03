@@ -48,6 +48,7 @@
   # Enable the Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;  
   services.xserver.windowManager.i3.enable = true;
+  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   
 
   # Configure keymap in X11
@@ -96,6 +97,7 @@
     ripgrep
 
     binutils gnutar gzip gnumake gcc binutils coreutils gawk gnused patchelf findutils
+    elfutils 
     cmake pkgconfig 
     cargo
     ghdl gtkwave gnome3.adwaita-icon-theme breeze-icons
@@ -139,6 +141,20 @@
 
     pavucontrol pasystray
 
+    xorg.xhost ueberzug  # for telekasten img preview, xhost +
+
+    youtube-dl vlc 
+    ghostscript
+    
+    okular feh 
+
+    # file manager(s)
+    # dolphin : can't get thumbnails to work
+    dolphin
+    xfce.thunar xfce.tumbler
+    gnome.nautilus gnome.sushi
+   
+    
     # maybe later
     # steam
     # mongodb
