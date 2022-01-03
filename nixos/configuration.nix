@@ -39,6 +39,10 @@
   services.xserver.displayManager.gdm.enable = true;  
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.package = pkgs.i3-gaps;
+
+  services.xserver.desktopManager.wallpaper.combineScreens = false;
+  services.xserver.desktopManager.wallpaper.mode = "fill";
+
   
 
   # Configure keymap in X11
