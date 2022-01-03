@@ -20,17 +20,10 @@
   };
 
 
-  networking.hostName = "ryzen"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp42s0.useDHCP = true;
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -41,9 +34,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # amdgpu
-  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;  
