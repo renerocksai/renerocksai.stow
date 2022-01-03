@@ -81,6 +81,7 @@
     git-crypt
     stow
     tmux
+    file
     
     htop ncdu 
     xclip
