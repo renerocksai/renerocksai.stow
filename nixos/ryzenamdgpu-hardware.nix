@@ -30,10 +30,21 @@
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 
+  #### hand-edited stuff follows
+
   # amdgpu
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # Use the systemd-boot EFI boot loader.
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi"; 
+  boot.loader.grub = {
+    efiSupport = true;
+    device = "nodev";
+  };
 
   networking.hostName = "ryzen"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
