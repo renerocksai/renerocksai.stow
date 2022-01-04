@@ -5,6 +5,7 @@ follow the general install instructions
 - nixos parted, format, mount
 - clone stow repo to installer
 - copy nixos configuration over
+  - don't forget the `xkb` dir!
 - nixos-install
 
 - boot
@@ -23,10 +24,15 @@ conda create -n py39 python==3.9
 
 create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
 
-## more nvim stuff
+## nvim stuff
 
 start nvim
+
+```vim
 :PlugInstall
+:helptags ALL
+```
+
 let treesitter do its thing
 
 run download_solmeko.lua from within vim -- takes a while, continue with copying it into its Linux directory:
@@ -39,22 +45,22 @@ cp * Linux/
 
 ### firenvim
 
-Run firenvim install (repeat if necessary): `bin/install_firenvim.sh`.
+Run firenvim install (repeat if necessary): `bin/install_firenvim.sh`
 
 ### markdown preview
 
-Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`.
+Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 
 ## ssh
 
-scp the secrets to the new machine
-then git-uncrypt the stow (and zk) repos
-stow ssh
-chmod all ./ssh/* to 600
+- scp the secrets to the new machine
+- then git-uncrypt the stow (and zk) repos
+- `stow ssh`
+- `chmod ~/.ssh/* 600`
 
-## nixos
+## nixos (optional)
 
-Make sure we keep tracking changes
+Make sure we keep tracking changes - optional
 
 ```console
 cd /etc/nixos
@@ -66,11 +72,6 @@ ln /home/rs/renerocksai.stow/nixos/configuration.nix # hard link!!!!
 
 dap stuff in vim. not important, I hardly ever debug. will look into when more time. will probably do it in a nix-shell
 similar to the one used for pylsp
-
-# issues
-
-- [x] no helpfiles in nvim!!! --> `:helptags ALL` fixes it!
-- [x] paths in i3config : flameshot
 
 # stuff for later
 
@@ -87,7 +88,7 @@ stuff to try out I found on the internets
 
 - steam
 
-## areina
+## insptirations from areina
 
 ```nix
   virtualisation.virtualbox.host.enable = true;
