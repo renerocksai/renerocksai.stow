@@ -1,0 +1,6 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -p python39Packages.python-lsp-server -p python39Packages.pylsp-mypy -p python39Packages.pyls-flake8
+#! nix-shell -i bash
+pylsp $*
+
+####! nix-shell -p python39Packages.python-lsp-server -p python39Packages.pylsp-mypy -p python39Packages.pyls-black -p python39Packages.pyls-flake8

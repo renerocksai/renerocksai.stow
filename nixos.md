@@ -23,18 +23,7 @@ conda create -n py39 python==3.9
 
 create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
 
-### install python lsp
-
-```console
-cd language-servers
-pip install -r requirements.txt
-```
-
-## more language-servers and nvim stuff
-
-```console
-cargo install stylua
-```
+## more nvim stuff
 
 start nvim
 :PlugInstall
@@ -48,20 +37,20 @@ mkdir Linux
 cp * Linux/
 ```
 
+### firenvim
+
+Run firenvim install (repeat if necessary): `bin/install_firenvim.sh`.
+
+### markdown preview
+
+Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`.
+
 ## ssh
 
 scp the secrets to the new machine
 then git-uncrypt the stow (and zk) repos
 stow ssh
 chmod all ./ssh/* to 600
-
-## firenvim
-
-Run firenvim install if necessary:
-
-```console
-nvim --headless "+call firenvim#install(0) | q"
-```
 
 ## nixos
 
@@ -75,7 +64,8 @@ ln /home/rs/renerocksai.stow/nixos/configuration.nix # hard link!!!!
 
 ## open
 
-dap stuff in vim. not important, I hardly ever debug. will look into when more time
+dap stuff in vim. not important, I hardly ever debug. will look into when more time. will probably do it in a nix-shell
+similar to the one used for pylsp
 
 # issues
 
@@ -132,6 +122,7 @@ stuff to try out I found on the internets
 ```
 
 ## hardware
+
 <https://github.com/NixOS/nixos-hardware>
 from
 <https://nixos.wiki/wiki/Configuration_Collection>

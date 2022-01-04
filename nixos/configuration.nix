@@ -67,7 +67,7 @@
   users.users.rs = {
     initialPassword = "rs";
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "dialout"]; # Enable ‘sudo’ for the user, docker, dialout for arduino
     shell = pkgs.zsh;
   };
 
@@ -100,7 +100,10 @@
     starship
     conda   # run conda-shell, then within: conda-install
     neofetch
-    cargo # run cargo install stylua
+
+    cargo 
+
+    stylua
     (lua.withPackages(ps: with ps; [ busted luafilesystem luacheck ]))
 
     mediainfo

@@ -5,4 +5,3 @@ if [ -d "/home/rs/.furhat/launcher/JDK/jdk8u265-b01/bin" ]; then
     export PATH="$JAVA_HOME/bin:$PATH"
 fi
 # End of Furhat Robotics addition
-. "$HOME/.cargo/env"
