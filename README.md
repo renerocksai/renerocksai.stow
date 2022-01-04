@@ -27,6 +27,7 @@ Eventually, we might go down the ansible route.
 - lua5.1
   - stylua
     - via [github](https://github.com/JohnnyMorganz/StyLua) releases or cargo (install first)
+    - on nixos: done automatically
   - luacheck
     - via apt or luarocks (install first)
     - on nixos: done automatically
@@ -104,6 +105,8 @@ $ pip install -r requirements.txt
 on nixos, do this in a conda env and use the conda env when editing python files. if entering a conda env is too much
 work, then use `bin/pylsp.sh` as language server (rename it to pylsp).
 
+Update: on nixos, `bin/pylsp` does this without conda in a clean, transparent nix-shell.
+
 #### Debugging Python
 
 ```console
@@ -132,6 +135,8 @@ cp * Linux/
 ### zig
 
 Download the zig language server from github and unpack it in ~/bin/
+
+On NixOS, this is done automatically.
 
 ### markdownlint (for null-ls)
 
