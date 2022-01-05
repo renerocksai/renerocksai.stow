@@ -1,6 +1,6 @@
 # install nixos
 
-follow the general install instructions
+follow the [general install instructions](https://nixos.org/manual/nixos/stable/index.html#sec-installation)
 
 - boot the installer system (from iso, usb)
 - partition, format, and mount harddisk on `/mnt`
