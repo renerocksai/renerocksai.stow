@@ -57,9 +57,10 @@ Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 
 ## ssh
 
-- scp the secrets to the new machine
-- then git-uncrypt the stow (and zk) repos
-- `stow ssh`
+- scp the secret to the new machine
+- then git-uncrypt the stow repo
+  - `git-crypt ../stow-repo-git-crypt-key unlock`
+  - `stow ssh`
 - `chmod ~/.ssh/* 600`
 
 ## install conda (optional)
@@ -70,7 +71,9 @@ conda-install
 conda create -n py39 python==3.9
 ```
 
-create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
+create a link in home to remain compatible with the ubuntu conda:
+
+- `cd ; ln -s .conda anaconda3`
 
 To use:
 
