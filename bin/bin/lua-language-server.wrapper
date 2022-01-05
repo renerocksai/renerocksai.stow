@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+if [ -d /nix ] ; then
+    bin=$(which lua-language-server)
+    basedir=$(dirname $bin)
+    basedir=$(dirname $basedir)/share/lua-language-server
+
+    echo basedir: $basedir >> /home/rs/shit.log
+    lua-language-server -E $basedir/main.lua
+else
+    /home/rs/.cache/nvim/nlua/sumneko_lua/lua-language-server/bin/lua-language-server -E /home/rs/.cache/nvim/nlua/sumneko_lua/lua-language-server/main.lua
+fi

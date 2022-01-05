@@ -97,6 +97,7 @@
 
     stylua
     (lua.withPackages(ps: with ps; [ busted luafilesystem luacheck ]))
+    sumneko-lua-language-server
 
     mediainfo
     zip unzip p7zip rar xz unrar

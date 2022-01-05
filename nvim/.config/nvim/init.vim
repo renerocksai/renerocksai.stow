@@ -685,7 +685,43 @@ for _, lsp in ipairs(servers) do
 end
 
 -- now do the same with nlua
+local function nlua_patch () 
+    local nixos_exists = io.open('/nix/', 'r')
+    if nixos_exists == nil then
+        local cache_location = vim.fn.stdpath('cache')
+        local bin_folder = jit.os
+
+        local nlua_nvim_lsp = {
+          base_directory = string.format(
+            "%s/nlua/sumneko_lua/lua-language-server/",
+            cache_location
+          ),
+
+          bin_location = string.format(
+            "%s/nlua/sumneko_lua/lua-language-server/bin/%s/lua-language-server",
+            cache_location,
+            bin_folder
+          ),
+        }
+
+        return {
+          nlua_nvim_lsp.bin_location,
+          "-E",
+          string.format(
+            "%s/main.lua",
+            nlua_nvim_lsp.base_directory
+          ),
+        }
+    else
+        return {
+            "/home/rs/bin/lua-language-server.wrapper",
+            "-E",
+            "/home/rs/bin/lua-language-server.wrapper",  -- hack
+        }
+    end
+end
 require('nlua.lsp.nvim').setup(lspconfig, {
+    cmd = nlua_patch(),
     on_attach = on_attach,
 
     globals = {
@@ -693,6 +729,7 @@ require('nlua.lsp.nvim').setup(lspconfig, {
         "os"
     }
 })
+
 
 -- now comes zls
 nvim_lsp.zls.setup({

@@ -14,16 +14,6 @@ follow the general install instructions
 - install oh-my-zsh, rm generated zsh, stow zsh
 - reload i3 config i3-msg reload
 
-## install conda
-
-```console
-conda-shell
-conda-install
-conda create -n py39 python==3.9
-```
-
-create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
-
 ## nvim stuff
 
 start nvim
@@ -34,14 +24,6 @@ start nvim
 ```
 
 let treesitter do its thing
-
-run download_solmeko.lua from within vim -- takes a while, continue with copying it into its Linux directory:
-
-```console
-cd ~/.cache/nvim/nlua/sumneko_lua/lua-language-server/bin
-mkdir Linux
-cp * Linux/
-```
 
 ### firenvim
 
@@ -57,6 +39,16 @@ Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 - then git-uncrypt the stow (and zk) repos
 - `stow ssh`
 - `chmod ~/.ssh/* 600`
+
+## install conda
+
+```console
+conda-shell
+conda-install
+conda create -n py39 python==3.9
+```
+
+create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
 
 ## nixos (optional)
 
