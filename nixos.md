@@ -18,7 +18,7 @@ follow the general install instructions
 
 Since ...
 
-- we use `gnu stow` for dotfile management (to have dotfiles for Ubuntu)
+- we use `gnu stow` for dotfile management (to have dotfiles for Ubuntu or other machines we SSH into)
 - we want to use a plugin manager (for plugin hacking) in nvim and not nix-provided plugins
 - our SSH keys are encrypted
 
@@ -26,8 +26,14 @@ Since ...
 
 - reboot, log in as `rs`
 - git clone `renerocksai.stow` repo right into the `$HOME`
-- stow all
-- install `oh-my-zsh`, rm generated `~/.zshrc`, `stow zsh`
+- stow all:
+  - `stow bash bin git i3 kitty login nvim ssh starship tmux`
+  - **exclude** `alacritty desktop-shortcuts fonts language-servers nixos zsh`
+    - we don't use alacritty, zsh will come next, rest is not stowable
+- install and configure oh-my-zsh:
+  - `bin/install_oh-my-zsh.sh`
+  - `rm ~/.zshrc`
+  - `stow zsh`
 - reload i3 config with `i3-msg reload`
 
 ## nvim stuff
