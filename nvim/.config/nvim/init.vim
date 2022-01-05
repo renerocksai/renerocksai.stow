@@ -155,6 +155,9 @@ nnoremap <silent> <Leader>l :exe "vertical resize +5" <CR>
 nnoremap <silent> <Leader>h :exe "vertical resize -5" <CR>
 """"""""""""""""""""""""""""""""""""""""""
 
+" we don't want to press shift
+nnoremap ; :
+
 set mouse=a
 
 if !has('nvim')
@@ -916,3 +919,4 @@ require("flutter-tools").setup{
 } -- use defaults
 require("telescope").load_extension("flutter")
 EOF
+

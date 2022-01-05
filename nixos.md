@@ -1,18 +1,34 @@
-## install nixos
+# install nixos
 
 follow the general install instructions
 
-- nixos parted, format, mount
-- clone stow repo to installer
-- copy nixos configuration over
+- boot the installer system (from iso, usb)
+- partition, format, and mount harddisk on `/mnt`
+- git clone `renerocksai.stow` repo to `/` (root of installer system)
+- copy nixos configuration from `/renerocksai.stow/nixos/` over to `/etc/nixos`
   - don't forget the `xkb` dir!
-- nixos-install
+- replace or extend `/etc/nixos/hardware-configuration.nix`
+  - e.g. replace by `/renerocksai.stow/nixos/ryzenamdgpu-hardware.nix`
+    - which you probably copied over to `/etc/nixos/ryzenamdgpu-hardware.nix`
+  - this is **required** since my `configuration.nix` leaves it to you what bootloader you want and how you name your
+    partitions
+- `nixos-install`
 
-- boot
-- git clone stow repo
+# post-install
+
+Since ...
+
+- we use `gnu stow` for dotfile management (to have dotfiles for Ubuntu)
+- we want to use a plugin manager (for plugin hacking) in nvim and not nix-provided plugins
+- our SSH keys are encrypted
+
+... we cannot fully automate everything. Yet. So there are a few post-install steps:
+
+- reboot, log in as `rs`
+- git clone `renerocksai.stow` repo right into the `$HOME`
 - stow all
-- install oh-my-zsh, rm generated zsh, stow zsh
-- reload i3 config i3-msg reload
+- install `oh-my-zsh`, rm generated `~/.zshrc`, `stow zsh`
+- reload i3 config with `i3-msg reload`
 
 ## nvim stuff
 
@@ -40,7 +56,7 @@ Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 - `stow ssh`
 - `chmod ~/.ssh/* 600`
 
-## install conda
+## install conda (optional)
 
 ```console
 conda-shell
@@ -49,6 +65,13 @@ conda create -n py39 python==3.9
 ```
 
 create a link in home to remain compatible with the ubuntu conda: `ln -s .conda anaconda3`
+
+To use:
+
+```console
+conda-shell
+conda activate py39
+```
 
 ## nixos (optional)
 
