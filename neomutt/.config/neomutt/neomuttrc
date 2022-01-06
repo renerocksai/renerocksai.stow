@@ -1,4 +1,10 @@
 source secrets 
+# set from = "xxxxxxxxx@gmail.com"
+# set smtp_url = "smtps://xxxxxxxxx@smtp.gmail.com"
+# set realname = "Mr. X"
+# set imap_user = "xxxxxxxxx@gmail.com"
+# set imap_pass = "gmail-generated-app-pw-here"
+# set smtp_pass = "gmail-generated-app-pw-here"
 
 set smtp_authenticators="login"
 #set ssl_starttls=yes
