@@ -3,14 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+#let unstable = import<nixos-unstable> {};
+#in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
-
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
 
   # Set your time zone.
@@ -31,6 +33,14 @@
   services.xserver.displayManager.gdm.enable = true;  
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.package = pkgs.i3-gaps;
+  services.xserver.windowManager.i3.extraPackages = with pkgs; [
+    dmenu
+    i3status
+    i3lock
+    i3blocks
+    # unstable.rofi unstable.rofi-calc unstable.rofi-file-browser unstable.rofi-power-menu
+    rofi rofi-calc rofi-file-browser rofi-power-menu
+  ];
 
   services.xserver.desktopManager.wallpaper.combineScreens = false;
   services.xserver.desktopManager.wallpaper.mode = "fill";
@@ -59,7 +69,7 @@
   users.users.rs = {
     initialPassword = "rs";
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "dialout"]; # Enable ‘sudo’ for the user, docker, dialout for arduino
+    extraGroups = [ "wheel" "docker" "dialout" "networkmanager" ]; # Enable ‘sudo’ for the user, docker, dialout for arduino
     shell = pkgs.zsh;
   };
 
@@ -84,7 +94,7 @@
     ripgrep
 
     binutils gnutar gzip gnumake gcc binutils coreutils gawk gnused patchelf findutils
-    elfutils 
+    elfutils colordiff 
     cmake pkgconfig 
     cargo
     ghdl gtkwave gnome3.adwaita-icon-theme breeze-icons
@@ -115,7 +125,7 @@
 
     google-chrome
 
-    obs-studio 
+    obs-studio kdenlive
     SDL2
     krita
     cloc
@@ -147,6 +157,7 @@
    
     
     # maybe later
+    # libreoffice
     # steam
     # mongodb
     # insomnia

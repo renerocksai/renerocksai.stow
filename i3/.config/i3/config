@@ -211,3 +211,4 @@ bindsym --release $mod+Shift+p exec /home/rs/bin/flameshot.wrapper full -p ~/Pic
 bindsym --release $mod+control+l exec i3lock -e -c 000000
 
 for_window [title="Slides"] floating enable
+for_window [title="nm-connection-editor"] floating enable

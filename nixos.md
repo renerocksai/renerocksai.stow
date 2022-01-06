@@ -89,7 +89,7 @@ Make sure we keep tracking changes - optional
 ```console
 cd /etc/nixos
 rm configuration.nix
-ln /home/rs/renerocksai.stow/nixos/configuration.nix # hard link!!!!
+ln -s /home/rs/renerocksai.stow/nixos/configuration.nix
 ```
 
 ## open
