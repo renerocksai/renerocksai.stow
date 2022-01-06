@@ -33,7 +33,8 @@ macro index gs "<change-folder> =[Gmail]/Sent<tab><enter>" "Go to sent mail"
 macro index gd "<change-folder> =[Gmail]/Drafts<enter>" "Go to drafts"
 
 set sort = reverse-date-received
-set editor="/run/current-system/sw/bin/nvim"
+#set editor="/run/current-system/sw/bin/nvim"
+set editor="nvim '+:7'"
 
 
 set edit_headers # see headers when editing mail
