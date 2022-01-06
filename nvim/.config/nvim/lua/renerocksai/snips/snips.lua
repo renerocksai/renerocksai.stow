@@ -47,3 +47,4 @@ ls.snippets = {
 		}),
 	},
 }
+ls.snippets.mail = ls.snippets.text
