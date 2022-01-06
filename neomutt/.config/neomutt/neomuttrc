@@ -44,4 +44,5 @@ set fast_reply # do not ask for to, sbuject,.. when replying
 set mark_old = no # don't differentiate between new and old
 set forward_format="Fwd: %s"
 
-
+source ./gruvbox/colors-gruvbox-shuber.muttrc
+source ./gruvbox/colors-gruvbox-shuber-extended.muttrc
