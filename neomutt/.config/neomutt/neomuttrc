@@ -16,6 +16,17 @@ set postponed="+[Gmail]/Drafts"
 set record = "+[Gmail]/Sent Mail"
 set trash = "+[Gmail]/Trash"
 
+# Dealing with trash
+# http://marc.info/?l=mutt-users&m=120033080807087&w=2
+# Keep a copy of all messages
+folder-hook . 'macro index,pager d "<save-message>+[Gmail]/Trash<enter>"'
+
+# Except those in the trash
+folder-hook [Gmail]/Trash 'macro index,pager d <delete-message>'
+
+set confirmappend=no
+set confirmcreate=yes
+
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
@@ -29,7 +40,7 @@ set sidebar_visible = yes
 set sidebar_width = 22
 color sidebar_new color221 color233
 
-mailboxes +INBOX +[Gmail]/Drafts "+[Gmail]/Sent Mail"
+mailboxes +INBOX +[Gmail]/Drafts "+[Gmail]/Sent Mail" +[Gmail]/Trash
 
 
 # navigation
@@ -37,6 +48,7 @@ bind index g noop
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index gs "<change-folder> =[Gmail]/Sent<tab><enter>" "Go to sent mail"
 macro index gd "<change-folder> =[Gmail]/Drafts<enter>" "Go to drafts"
+macro index gt "<change-folder> =[Gmail]/Trash<enter>" "Go to trash"
 
 set sort = reverse-date-received
 #set editor="/run/current-system/sw/bin/nvim"
