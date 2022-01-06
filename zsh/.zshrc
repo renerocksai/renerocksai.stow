@@ -171,3 +171,5 @@ alias conda-shell="conda-shell -c zsh"
 if [ ! $(echo $PATH | grep .cargo/bin) ] ; then
     export PATH=$PATH:$HOME/.cargo/bin
 fi
+
+alias vc="vim ~/renerocksai.stow/nixos/configuration.nix"

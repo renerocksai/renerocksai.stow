@@ -154,8 +154,9 @@
     dolphin
     xfce.thunar xfce.tumbler
     gnome.nautilus gnome.sushi
-   
     
+    neomutt openssl 
+
     # maybe later
     # libreoffice
     # steam

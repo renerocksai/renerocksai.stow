@@ -1,3 +1,4 @@
 ssh/** filter=git-crypt diff=git-crypt merge=git-crypt
 REPOS.md filter=git-crypt diff=git-crypt merge=git-crypt
+neomutt/.config/neomutt/secrets filter=git-crypt diff=git-crypt merge=git-crypt
 
