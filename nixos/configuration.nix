@@ -152,7 +152,7 @@
     # file manager(s)
     # dolphin : can't get thumbnails to work
     dolphin
-    xfce.thunar xfce.tumbler
+    xfce.thunar xfce.tumbler ffmpegthumbnailer
     gnome.nautilus gnome.sushi
     
     neomutt openssl 
