@@ -131,9 +131,6 @@ export PATH=/home/rs/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 
-export JAVA_HOME=/home/rs/downloads/jdk1.8.0_241
-export PATH=$JAVA_HOME/bin:$PATH
-
 alias vim='TERM=tmux-256color nvim'
 export PATH=$PATH:/usr/local/lib/nodejs/node-v12.16.1-linux-x64/bin
 
@@ -173,3 +170,5 @@ if [ ! $(echo $PATH | grep .cargo/bin) ] ; then
 fi
 
 alias vc="vim ~/renerocksai.stow/nixos/configuration.nix"
+
+export PATH=$PATH:~/.furhat/launcher/SDK/2.1.0

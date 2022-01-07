@@ -212,3 +212,5 @@ bindsym --release $mod+control+l exec i3lock -e -c 000000
 
 for_window [title="Slides"] floating enable
 for_window [title="nm-connection-editor"] floating enable
+for_window [title="facecore"] floating enable   # furhat sdk
+

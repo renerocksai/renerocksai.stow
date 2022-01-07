@@ -157,6 +157,9 @@
     
     neomutt openssl 
 
+    # furhat SDK
+    appimage-run #openjdk8 libxkbcommon
+
     # maybe later
     # libreoffice
     # steam
@@ -174,6 +177,11 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk8;
+  };
 
  # programs.zsh.enable = true;
  # programs.zsh = {
@@ -207,6 +215,5 @@
   users.users.root.initialHashedPassword = "";
 
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
 
