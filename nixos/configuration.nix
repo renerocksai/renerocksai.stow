@@ -27,6 +27,8 @@
   };
 
   # Enable the X11 windowing system.
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
+
   services.xserver.enable = true;
 
   # Enable the Desktop Environment.
@@ -158,7 +160,7 @@
     neomutt openssl 
 
     # furhat SDK
-    appimage-run #openjdk8 libxkbcommon
+    appimage-run 
 
     # maybe later
     # libreoffice
@@ -178,10 +180,15 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
+  # furhat SDK needs jdk 
   programs.java = {
-    enable = true;
+    enable = true;                # this also sets JAVA_HOME system-wide!!!
     package = pkgs.jdk8;
   };
+
+  # the Furhat GestureCapture tool needs gtk schemas
+  # not sure this is needed anymore since we have our nix shell
+  programs.dconf.enable = true;
 
  # programs.zsh.enable = true;
  # programs.zsh = {
