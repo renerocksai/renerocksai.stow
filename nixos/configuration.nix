@@ -162,6 +162,9 @@
     # furhat SDK
     appimage-run 
 
+    # NAO SDK and RobotSettings
+    steam-run
+
     # maybe later
     # libreoffice
     # steam
