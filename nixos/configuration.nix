@@ -98,7 +98,7 @@
     binutils gnutar gzip gnumake gcc binutils coreutils gawk gnused patchelf findutils
     elfutils colordiff 
     cmake pkgconfig 
-    cargo
+    unixtools.killall 
     ghdl gtkwave gnome3.adwaita-icon-theme breeze-icons
     ninja
     starship

@@ -111,6 +111,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 " flutter and dap
 Plug 'akinsho/flutter-tools.nvim'
 
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -920,3 +922,15 @@ require("flutter-tools").setup{
 require("telescope").load_extension("flutter")
 EOF
 
+" indent_blankline
+lua << EOF
+vim.opt.list = true
+--vim.opt.listchars:append("space:⋅")
+--vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+--    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+}
+EOF
