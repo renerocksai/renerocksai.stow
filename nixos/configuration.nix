@@ -151,7 +151,7 @@
 
     xorg.xhost ueberzug  # for telekasten img preview, xhost +
 
-    youtube-dl vlc 
+    youtube-dl vlc mpv haruna mplayer
     ghostscript
     
     okular feh 
