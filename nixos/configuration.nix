@@ -11,6 +11,11 @@
       ./hardware-configuration.nix
     ];
 
+  # this is on by default:
+  hardware.opengl.driSupport = true;  
+  # For 32 bit applications like steam
+  hardware.opengl.driSupport32Bit = true;
+
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
@@ -164,6 +169,9 @@
 
     # NAO SDK and RobotSettings
     steam-run
+
+    # eventually, we need some office crap
+    libreoffice-qt
 
     # maybe later
     # libreoffice

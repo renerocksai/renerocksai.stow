@@ -689,6 +689,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require'lspconfig'.kotlin_language_server.setup{
+    cmd = {'/home/rs/code/github.com/renerocksai/kotlin_language_server/kotlin-language-server'},
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    }
+}
+
+
 -- now do the same with nlua
 local function nlua_patch () 
     local nixos_exists = io.open('/nix/', 'r')

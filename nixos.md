@@ -47,6 +47,11 @@ start nvim
 
 let treesitter do its thing
 
+### kotlin language language server
+
+If you need it, go to [kotlin-language-server.nixos](https://github.com/renerocksai/kotlin-language-server.nixos). It is
+already configured in `init.vim`, but you need to take the executable wrapper from there.
+
 ### firenvim
 
 Run firenvim install (repeat if necessary): `bin/install_firenvim.sh`
