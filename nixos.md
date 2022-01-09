@@ -108,11 +108,9 @@ stuff to try out I found on the internets
 
 - uget -- download manager
 - blueman -- bluetooth
-- wirelesstools
 
 - android-studio
 - genymotion -- android emulator
-- openjdk
 - watchman
 
 - steam
