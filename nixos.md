@@ -47,7 +47,7 @@ start nvim
 
 let treesitter do its thing
 
-### kotlin language language server
+### kotlin language server
 
 If you need it, go to [kotlin-language-server.nixos](https://github.com/renerocksai/kotlin-language-server.nixos). It is
 already configured in `init.vim`, but you need to take the executable wrapper from there.
@@ -120,6 +120,9 @@ stuff to try out I found on the internets
 ## insptirations from areina
 
 ```nix
+{
+  # ...
+
   virtualisation.virtualbox.host.enable = true;
 
   # battery management
@@ -149,6 +152,9 @@ stuff to try out I found on the internets
     extraGroups = ["wheel" "networkmanager" "vboxusers" "docker" ];
     shell = "/run/current-system/sw/bin/zsh";
   }
+
+  # ...
+}
 ```
 
 ## hardware
