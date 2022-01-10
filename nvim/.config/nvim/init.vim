@@ -450,6 +450,9 @@ hi link CalNavi CalRuler
 hi tkTagSep ctermfg=gray guifg=gray
 hi tkTag ctermfg=175 guifg=#d3869B
 
+autocmd filetype calendar :IndentBlanklineDisable
+autocmd filetype calendar :set signcolumn=no
+
 if has('termguicolors')
   set termguicolors
 endif
@@ -945,4 +948,4 @@ require("indent_blankline").setup {
 }
 EOF
 
-command! -nargs=1 Fhlibs !furhat-lib-search <args>
+command! -nargs=1 Fhls !furhat-lib-search <args>
