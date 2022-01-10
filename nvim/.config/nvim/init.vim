@@ -944,3 +944,5 @@ require("indent_blankline").setup {
     show_current_context_start = true,
 }
 EOF
+
+command! -nargs=1 Fhlibs !furhat-lib-search <args>
