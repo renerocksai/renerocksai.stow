@@ -948,4 +948,5 @@ require("indent_blankline").setup {
 }
 EOF
 
-command! -nargs=1 Fhls !furhat-lib-search <args>
+command! -nargs=1 Fhls :set splitright | vnew | read !furhat-lib-search <args>
+command! -nargs=1 Fhs  :set splitright | vnew | read !grep <args> ~/.furhat/launcher/SDK/2.1.0/lib/doc_furhat-commons-2.1.0.jar.txt 
