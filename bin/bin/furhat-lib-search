@@ -8,6 +8,27 @@ import subprocess
 SDK = "/home/rs/.furhat/launcher/SDK/2.1.0/lib"
 searchTerm = sys.argv[1]
 
+
+def searchWithinJar(jar, searchTerm):
+    result = subprocess.run(
+        [f'strings {jar} | grep {searchTerm}'],
+        stderr=subprocess.PIPE,
+        stdout=subprocess.PIPE, shell=True)
+
+    # we expect our result in stderr
+    if result.returncode != 0:
+        print('ERROR', result.returncode)
+        print(result.stdout.decode('utf-8'))
+        print(result.stderr.decode('utf-8'))
+        sys.exit(1)
+
+    for line in result.stdout.decode('utf-8').split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+        print(line)
+
+
 result = subprocess.run([
     'grep', '-R', searchTerm, f'{SDK}/'], stderr=subprocess.PIPE,
     stdout=subprocess.PIPE)
@@ -26,5 +47,6 @@ for line in result.stderr.decode('utf-8').split('\n'):
 
     if line.endswith('binary file matches'):
         parts = line.split()
-        # print('...', line)
-        print(os.path.basename(parts[1][:-1]))
+        # print('...', line)j
+        # print(os.path.basename(parts[1][:-1]))
+        searchWithinJar(parts[1][:-1], searchTerm)
