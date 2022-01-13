@@ -71,6 +71,8 @@ Plug 'renerocksai/telekasten.nvim'
 Plug 'renerocksai/calendar-vim'
 "Plug 'mattn/calendar-vim'
 
+Plug 'renerocksai/jar-sdk-browser.nvim'
+
 " lua and lsp stuff
 Plug 'neovim/nvim-lspconfig' " Collection of configurations for built-in LSP client
 Plug 'tjdevries/nlua.nvim'  " TJ's magic stuff
@@ -203,6 +205,8 @@ nnoremap <leader>c :cclose<CR>
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+nnoremap <leader>r :lua require('plenary.reload').reload_module('jar-sdk-browser')<CR>
 
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
@@ -950,3 +954,10 @@ EOF
 
 command! -nargs=1 Fhls :set splitright | vnew | read !furhat-lib-search <args>
 command! -nargs=1 Fhs  :set splitright | vnew | read !grep <args> ~/.furhat/launcher/SDK/2.1.0/lib/doc_furhat-commons-2.1.0.jar.txt 
+
+lua << EOF
+    require('jar-sdk-browser').setup({
+        jar_bin = '/run/current-system/sw/bin/jar',
+        javap_bin = '/run/current-system/sw/bin/javap',
+        })
+EOF
