@@ -961,3 +961,5 @@ lua << EOF
         javap_bin = '/run/current-system/sw/bin/javap',
         })
 EOF
+
+autocmd filetype scheme set ft=slides
