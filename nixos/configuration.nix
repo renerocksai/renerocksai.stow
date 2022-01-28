@@ -137,7 +137,7 @@
     krita
     cloc
 
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     smbclient
     audacity
     

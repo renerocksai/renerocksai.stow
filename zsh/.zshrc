@@ -170,5 +170,7 @@ if [ ! $(echo $PATH | grep .cargo/bin) ] ; then
 fi
 
 alias vc="vim ~/renerocksai.stow/nixos/configuration.nix"
+alias tk="cd ~/.config/nvim/data/plugged/telekasten.nvim"
 
 export PATH=$PATH:~/.furhat/launcher/SDK/2.1.0
+
