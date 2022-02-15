@@ -952,9 +952,9 @@ require("indent_blankline").setup {
 }
 EOF
 
-command! -nargs=1 Fhls :set splitright | vnew | read !furhat-lib-search <args>
-command! -nargs=1 Fhs  :set splitright | vnew | read !grep <args> ~/.furhat/launcher/SDK/2.1.0/lib/doc_furhat-commons-2.1.0.jar.txt 
-
+" Jar SDK browser. Invoke with `Sdks` command:
+" :Sdks<CR>
+" :Sdks search-term<CR>
 lua << EOF
     require('jar-sdk-browser').setup({
         jar_bin = '/run/current-system/sw/bin/jar',
@@ -963,3 +963,5 @@ lua << EOF
 EOF
 
 autocmd filetype scheme set ft=slides
+autocmd filetype kotlin set efm=:compileKotlin%t:\ %f:\ (%l\\,\ %c):\ %m,%t:\ %f:\ (%l\\,\ %c):\ %m,%-G%.%#
+nnoremap <space>b :cclose<cr>:make<bar>cwindow<CR>
