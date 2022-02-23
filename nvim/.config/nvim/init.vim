@@ -935,6 +935,12 @@ require("flutter-tools").setup{
     -- open_cmd = "30vnew", -- command to use to open the outline buffer
     auto_open = true -- if true this will open the outline automatically when it is first populated
   },
+  decorations = {
+    statusline = {
+      app_version = true,
+      device = false,
+    },
+  },
 } -- use defaults
 require("telescope").load_extension("flutter")
 EOF
@@ -965,3 +971,14 @@ EOF
 autocmd filetype scheme set ft=slides
 autocmd filetype kotlin set efm=:compileKotlin%t:\ %f:\ (%l\\,\ %c):\ %m,%t:\ %f:\ (%l\\,\ %c):\ %m,%-G%.%#
 nnoremap <space>b :cclose<cr>:make<bar>cwindow<CR>
+
+
+" temp until we move it into flutter-tools setup
+ " Jump to definition
+nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
+ " Jump to definition
+nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+ " Open code actions using the default lsp UI, if you want to change this please see the plugins above
+nnoremap <space>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
+ " Open code actions for the selected visual range
+xnoremap <space>ca <Cmd>lua vim.lsp.buf.range_code_action()<CR>
