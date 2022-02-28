@@ -173,6 +173,7 @@
     # eventually, we need some office crap
     libreoffice-qt
 
+    signal-desktop
     # maybe later
     # libreoffice
     # steam
