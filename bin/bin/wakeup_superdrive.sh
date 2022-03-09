@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-sg_raw /dev/sr0 EA 00 00 00 00 00 01
+# install sg3_utils
 
+sg_raw /dev/sr0 EA 00 00 00 00 00 01

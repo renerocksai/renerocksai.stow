@@ -76,7 +76,7 @@
   users.users.rs = {
     initialPassword = "rs";
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "dialout" "networkmanager" ]; # Enable ‘sudo’ for the user, docker, dialout for arduino
+    extraGroups = [ "wheel" "docker" "dialout" "networkmanager" "cdrom" ]; # Enable ‘sudo’ for the user, docker, dialout for arduino
     shell = pkgs.zsh;
   };
 
