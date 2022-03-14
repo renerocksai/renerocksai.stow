@@ -23,9 +23,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # dummy shit
-  dummy.shit = true;
-
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
