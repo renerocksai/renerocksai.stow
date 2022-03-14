@@ -24,9 +24,6 @@
   time.timeZone = "Europe/Berlin";
 
 
-  # schwuli änderung
-  my.conf = true;
-
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   console = {
