@@ -12,7 +12,7 @@
     pager = less -MIFRX
 	editor = nvim
 [color]
-        ui = true
+	ui = true
 [push]
 	default = matching
 

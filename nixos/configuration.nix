@@ -108,7 +108,7 @@
     ripgrep
 
     binutils gnutar gzip gnumake gcc binutils coreutils gawk gnused patchelf findutils
-    elfutils colordiff 
+    elfutils colordiff diff-so-fancy
     cmake pkgconfig 
     unixtools.killall 
     ghdl gtkwave gnome3.adwaita-icon-theme breeze-icons
