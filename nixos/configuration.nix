@@ -82,6 +82,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # # palo alto global protect 
+  # services.globalprotect = {
+  #   enable = true;
+  #   # host integrity protection report:
+  #   csdWrapper = "${pkgs.openconnect}/libexec/openconnect/hipreport.sh";
+  # };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -174,6 +181,10 @@
     libreoffice-qt
 
     signal-desktop
+    
+    # palo alto globalprotect
+    # globalprotect-openconnect
+
     # maybe later
     # libreoffice
     # steam
