@@ -6,7 +6,17 @@ local i = ls.insert_node
 local conds = require("luasnip.extras.expand_conditions")
 
 ls.snippets = {
-	all = {},
+	all = {
+		-- shit to test if snips completion is working
+		s("xxx", {
+			i(1),
+			t({
+				"this is xxx",
+			}, {
+				-- condition = conds.line_begin,
+			}),
+		}),
+	},
 	text = {
 		s("lg", {
 			i(1),
@@ -43,3 +53,5 @@ ls.snippets = {
 	},
 }
 ls.snippets.mail = ls.snippets.text
+
+-- print(vim.inspect(ls.snippets))

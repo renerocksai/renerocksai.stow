@@ -60,7 +60,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'tomlion/vim-solidity'
 
 "Firenvim
-Plug 'glacambre/firenvim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " Emojis
 Plug 'kyuhi/vim-emoji-complete'
