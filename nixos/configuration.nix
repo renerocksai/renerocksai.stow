@@ -240,6 +240,10 @@
     #challengeResponseAuthentication = false; # or "yes" or "no"??
   };
 
+  # rene mongodb with defaults -- is SOOOOO old, it's "unusable" with pymongo
+  # even older than the one on our 2-3 years old aws instance
+  # services.mongodb.enable = true;
+
   virtualisation.docker.enable = true;
 
   users.users.root.initialHashedPassword = "";
