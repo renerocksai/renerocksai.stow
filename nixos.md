@@ -42,7 +42,7 @@ start nvim
 
 ```vim
 :PlugInstall
-:helptags ALL
+:helptags ALL    " this will make sure, all help is available
 ```
 
 let treesitter do its thing
@@ -51,14 +51,6 @@ let treesitter do its thing
 
 If you need it, go to [kotlin-language-server.nixos](https://github.com/renerocksai/kotlin-language-server.nixos). It is
 already configured in `init.vim`, but you need to take the executable wrapper from there.
-
-### firenvim
-
-Run firenvim install (repeat if necessary): `bin/install_firenvim.sh`
-
-### markdown preview
-
-Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 
 ## ssh
 
@@ -69,6 +61,11 @@ Run install (repeat if necessary): `bin/install_markdownpreviewstuff.sh`
 - `chmod ~/.ssh/* 600`
 
 ## install conda (optional)
+
+I don't really use Anaconda anymore. Poetry serves me quite well. I use a nix-shell with poetry and python39. Inside the
+nix-shell, I can install python-language-server etc. - and it will be found by nvim, so everything is cool.
+
+But I haven't removed Anaconda from my config:
 
 ```console
 conda-shell
@@ -109,7 +106,7 @@ stuff to try out I found on the internets
 - uget -- download manager
 - blueman -- bluetooth
 
-- android-studio
+- android-studio -- I have my [flutter-docker](https://github.com/renerocksai/flutter-docker) container for that.
 - genymotion -- android emulator
 - watchman
 
@@ -155,8 +152,6 @@ stuff to try out I found on the internets
 }
 ```
 
-## hardware
+## hardware - interesting links
 
-<https://github.com/NixOS/nixos-hardware>
-from
-<https://nixos.wiki/wiki/Configuration_Collection>
+<https://github.com/NixOS/nixos-hardware> from <https://nixos.wiki/wiki/Configuration_Collection>
