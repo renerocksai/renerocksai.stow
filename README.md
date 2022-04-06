@@ -1,10 +1,12 @@
 # What to install
 
-I have put all this in a nixos config. See [NixOS](nixos.md) for how I install my system.
+## I have put all this in a nixos config. See [NixOS](nixos.md) for how I install my system
 
 Eventually, we might go down the ansible route.
 
 ## Essentials
+
+While this is a good starting point, it is not really maintained since my switch to NixOS - see my nixos config for what I use to install.
 
 - binutils
 - build-essential, cmake
