@@ -17,6 +17,12 @@
   hardware.opengl.driSupport32Bit = true;
 
   networking.networkmanager.enable = true;
+
+  # extra /etc/hosts entries: 
+  networking.extraHosts = 
+    ''
+      127.0.0.1 cr.nim.org
+    '';
   programs.nm-applet.enable = true;
 
 

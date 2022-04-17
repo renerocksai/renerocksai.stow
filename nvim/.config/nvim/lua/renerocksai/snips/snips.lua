@@ -5,8 +5,10 @@ local t = ls.text_node
 local i = ls.insert_node
 local conds = require("luasnip.extras.expand_conditions")
 
-ls.snippets = {
-	all = {
+M = {}
+
+function M.init_snippets()
+	ls.add_snippets("all", {
 		-- shit to test if snips completion is working
 		s("xxx", {
 			i(1),
@@ -16,8 +18,9 @@ ls.snippets = {
 				-- condition = conds.line_begin,
 			}),
 		}),
-	},
-	text = {
+	})
+
+	ls.add_snippets("text", {
 		s("lg", {
 			i(1),
 			t({
@@ -41,17 +44,19 @@ ls.snippets = {
 				"Technology Lab Manager - Senior Researcher",
 				"Human Centered AI - Machine Learning",
 				"",
-				"Nürnberg Institut für Marktentscheidungen (zuvor GfK Verein)",
-				"Gründer und Ankeraktionär der GfK SE",
-				"",
 				"T +49 911 9515 1977",
 				"rene.schallner@nim.org",
 				"",
+				"Nürnberg Institut für Marktentscheidungen (zuvor GfK Verein)",
+				"Gründer und Ankeraktionär der GfK SE",
 				"Vereinsregister Amtsgericht Nürnberg VR200665",
 			}),
 		}),
-	},
-}
-ls.snippets.mail = ls.snippets.text
+	})
+	ls.filetype_extend("mail", { "text" })
 
--- print(vim.inspect(ls.snippets))
+	-- print(vim.inspect(ls.snippets))
+end
+
+M.init_snippets()
+return M
