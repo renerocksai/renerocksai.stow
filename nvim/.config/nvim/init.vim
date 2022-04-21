@@ -699,7 +699,7 @@ for _, lsp in ipairs(servers) do
 end
 
 require'lspconfig'.kotlin_language_server.setup{
-    cmd = {'/home/rs/code/github.com/renerocksai/kotlin_language_server/kotlin-language-server'},
+    cmd = {'/home/rs/code/github.com/renerocksai/kotlin_language_server.nixos/kotlin-language-server'},
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
