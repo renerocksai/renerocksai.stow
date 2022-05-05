@@ -972,7 +972,7 @@ EOF
 
 autocmd filetype scheme set ft=slides
 autocmd filetype kotlin set efm=:compileKotlin%t:\ %f:\ (%l\\,\ %c):\ %m,%t:\ %f:\ (%l\\,\ %c):\ %m,%-G%.%#
-nnoremap <space>b :cclose<cr>:make<bar>cwindow<CR>
+nnoremap <space>b :cclose<cr>:make!<bar>cwindow<CR>
 
 
 " temp until we move it into flutter-tools setup
