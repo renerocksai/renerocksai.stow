@@ -778,7 +778,7 @@ local fmt = null_ls.builtins.formatting
 null_ls.setup({
   sources = {
     fmt.trim_whitespace.with({
-      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua", "markdown", "telekasten" },
+      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua", "markdown", "telekasten", "python", "flutter", "dart", "zig" },
     }),
     fmt.black,
     fmt.stylua,
