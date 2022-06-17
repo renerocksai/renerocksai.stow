@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 #let unstable = import<nixos-unstable> {};
 #in
 {
@@ -137,6 +137,18 @@
     nodejs nodePackages.yarn
     nodePackages.markdownlint-cli    # this
  
+    SDL2
+    xorg.libX11 
+    xorg.libX11.dev
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.xinput
+    xorg.libXrandr
+    glew
+    pkgs.gtk3
+    libGL
+    pkgs.gtk3
+
     # broken. we solve it with conda
     # (python3.withPackages(ps: [
     #   ps.python-lsp-server
@@ -146,7 +158,6 @@
     google-chrome
 
     obs-studio kdenlive
-    SDL2
     krita
     cloc
 
@@ -253,6 +264,16 @@
   virtualisation.docker.enable = true;
 
   users.users.root.initialHashedPassword = "";
+
+
+  # from https://discourse.nixos.org/t/making-lib64-ld-linux-x86-64-so-2-available/19679
+  # removing the need to patchelf-ing executables 
+  # this is not how NixOS should be used, but makes things easier
+  system.activationScripts.ldso = lib.stringAfter [ "usrbinenv" ] ''
+    mkdir -m 0755 -p /lib64
+    ln -sfn ${pkgs.glibc.out}/lib64/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2.tmp
+    mv -f /lib64/ld-linux-x86-64.so.2.tmp /lib64/ld-linux-x86-64.so.2 # atomically replace
+  '';
 
   system.stateVersion = "21.11"; # Did you read the comment?
 }
