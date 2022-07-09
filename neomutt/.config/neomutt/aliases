@@ -1,0 +1,8 @@
+alias slides ~renerocksai/slides@lists.sr.ht
+alias bullets ~renerocksai/bullets@lists.sr.ht
+alias telekasten-discuss ~renerocksai/telekasten.nvim-discuss@lists.sr.ht
+alias telekasten-announce ~renerocksai/telekasten.nvim-announce@lists.sr.ht
+alias telekasten-devel ~renerocksai/telekasten.nvim-devel@lists.sr.ht
+alias real-prog-qwerty ~renerocksai/real-prog-qwerty@lists.sr.ht
+alias ssh-docker-cr ~renerocksai/ssh-docker-cr@lists.sr.ht
+

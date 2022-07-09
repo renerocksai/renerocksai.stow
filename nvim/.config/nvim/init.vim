@@ -417,6 +417,8 @@ require('telekasten').setup({
 END
 
 autocmd filetype markdown set tw=120
+autocmd filetype mail set tw=72
+autocmd filetype text set tw=72
 nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
 nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
@@ -778,7 +780,7 @@ local fmt = null_ls.builtins.formatting
 null_ls.setup({
   sources = {
     fmt.trim_whitespace.with({
-      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua", "markdown", "telekasten", "python", "flutter", "dart", "zig", "kotlin" },
+      filetypes = { "text", "sh", "zsh", "yaml", "toml", "make", "conf", "lua", "markdown", "telekasten", "python", "flutter", "dart", "zig", "kotlin", "html", "htmldjango"},
     }),
     fmt.black,
     fmt.stylua,

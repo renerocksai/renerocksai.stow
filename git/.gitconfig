@@ -1,5 +1,5 @@
 [user]
-	email = renerocksai@gmail.com
+	email = rene@renerocks.ai
 	name = Rene Schallner
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

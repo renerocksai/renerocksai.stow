@@ -1,66 +1,137 @@
-source secrets 
-# set from = "xxxxxxxxx@gmail.com"
-# set smtp_url = "smtps://xxxxxxxxx@smtp.gmail.com"
-# set realname = "Mr. X"
-# set imap_user = "xxxxxxxxx@gmail.com"
-# set imap_pass = "gmail-generated-app-pw-here"
-# set smtp_pass = "gmail-generated-app-pw-here"
+## Basic configuration
 
-set smtp_authenticators="login"
-#set ssl_starttls=yes
-set ssl_force_tls=yes
+## FROM : https://github.com/ork/mutt-office365
 
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed="+[Gmail]/Drafts"
-set record = "+[Gmail]/Sent Mail"
-set trash = "+[Gmail]/Trash"
+source "~/.config/neomutt/user"
 
-# Dealing with trash
-# http://marc.info/?l=mutt-users&m=120033080807087&w=2
-# Keep a copy of all messages
-folder-hook . 'macro index,pager d "<save-message>+[Gmail]/Trash<enter>"'
+### Advanced configuration
+### YOU SHOULD NOT MODIFY THIS UNLESS YOU KNOW WHAT YOU'RE DOING
 
-# Except those in the trash
-folder-hook [Gmail]/Trash 'macro index,pager d <delete-message>'
+# Loading language properties
 
-set confirmappend=no
-set confirmcreate=yes
+source "~/.config/neomutt/lang/$my_lang"
 
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
-set certificate_file=~/.mutt/certificates
+## Server config
 
-# Basic Options
-set wait_key = no
-set move = no
+# IMAP config
+set imap_user="$my_username@$my_domain"
+set imap_pass=$my_password
 
-# Sidebar 
-set sidebar_visible = yes
-set sidebar_width = 22
-color sidebar_new color221 color233
+set folder="imaps://outlook.office365.com/"
+set spoolfile= +INBOX
+set postponed= +$my_drafts_noquote
+set record = +$my_sent_noquote
+set trash = +$my_trash_noquote
+mailboxes
 
-mailboxes +INBOX +[Gmail]/Drafts "+[Gmail]/Sent Mail" +[Gmail]/Trash
+set imap_check_subscribed="yes"
+set imap_list_subscribed="yes"
+set timeout=15
+set mail_check=90
+set imap_keepalive=180
+set imap_idle
+unset mark_old
+set ssl_use_sslv3=yes
 
+# SMTP config
+set realname = $my_realname
+set from = "$my_username@$my_domain"
+set smtp_pass = $my_password
+set hostname = $my_domain
+set smtp_url = "smtp://$my_username@$my_domain@outlook.office365.com:587/"
+set ssl_force_tls = yes
+set smtp_authenticators = "login"
 
-# navigation
-bind index g noop
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index gs "<change-folder> =[Gmail]/Sent<tab><enter>" "Go to sent mail"
-macro index gd "<change-folder> =[Gmail]/Drafts<enter>" "Go to drafts"
-macro index gt "<change-folder> =[Gmail]/Trash<enter>" "Go to trash"
+## More settings
 
-set sort = reverse-date-received
-#set editor="/run/current-system/sw/bin/nvim"
-set editor="nvim '+:7'"
+# File storage settings
 
+set signature="~/.config/neomutt/signature"
+set message_cachedir="~/.mutt/message_cache"
+set header_cache="~/.mutt/header_cache"
+set tmpdir="~/.mutt/tmp"
 
-set edit_headers # see headers when editing mail
-set include # quote msg when replying
-set reply_to # use adress from reply-to header when replying
-set fast_reply # do not ask for to, sbuject,.. when replying
-set mark_old = no # don't differentiate between new and old
-set forward_format="Fwd: %s"
+# Text view first
+set pager_stop="yes"
+set smart_wrap="yes"
+alternative_order text/plain
+auto_view text/html
+set reverse_name=yes
+set reverse_realname=yes
 
+# Text editor
+#set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+set editor="nvim"
+
+# Adress book handling
+set sort_alias=alias
+set reverse_alias=yes
+set alias_file="~/.mutt/aliases"
+source "~/.config/neomutt/gal"
+source "~/.config/neomutt/aliases"
+source "~/.config/neomutt/mailing_lists"
+
+# Thread ordering
+set sort = 'threads'
+set sort_browser="date"
+set sort_aux="last-date-received"
+unset collapse_unread
+set index_format=" %?M?   ↳&%4C?   %Z      %D     %-15.15n    %s"
+
+## Key bindings
+
+# Mailboxes
+bind    index   G  imap-fetch-mail
+bind    index   g  noop
+macro   index   gi "<change-folder>=INBOX<enter>"       "Go to Inbox"
+macro   index   gs "<change-folder>=$my_sent<enter>"    "Go to Sent"
+macro   index   gd "<change-folder>=$my_drafts<enter>"  "Go to Drafts"
+macro   index   gt "<change-folder>=$my_trash<enter>"   "Go to Trash"
+
+# Index
+bind    index   <up>        previous-entry
+bind    index   <down>      next-entry
+bind    index   <delete>    delete-message
+bind    index   n           next-entry
+bind    index   p           previous-entry
+macro   index   Q           ":set quit=yes\nq" "Quit mutt without asking"
+bind    index   C           noop
+bind    index   -           collapse-thread
+bind    index   _           collapse-all
+
+# Pager
+bind    pager   <up>        previous-line
+bind    pager   <down>      next-line
+bind    pager   <left>      previous-entry
+bind    pager   <right>     next-entry
+bind    pager   <delete>    delete-message
+bind    pager   k           previous-line
+bind    pager   j           next-line
+bind    pager   n           next-entry
+bind    pager   p           previous-entry
+bind    pager   w           previous-page
+
+# Colors
+color   normal      white default
+color   attachment  brightyellow default
+color   hdrdefault  cyan default
+color   indicator   black cyan
+color   markers     brightred default
+color   quoted      green default
+color   signature   cyan default
+color   status      brightgreen blue
+color   tilde       blue default
+color   tree        red default
+color   header      brightgreen default ^From:
+color   header      brightcyan default ^To:
+color   header      brightcyan default ^Reply-To:
+color   header      brightcyan default ^Cc:
+color   header      brightblue default ^Subject:
+color   body        brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color   body        brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+
+# For better looks
+#set markers=no # don't put '+' at the beginning of wrapped lines
+#set pager_index_lines= 5 # how large is the index window?
 source ./gruvbox/colors-gruvbox-shuber.muttrc
 source ./gruvbox/colors-gruvbox-shuber-extended.muttrc
