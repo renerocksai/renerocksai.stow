@@ -199,6 +199,8 @@
     libreoffice-qt
 
     signal-desktop
+
+    aerc
     
     # palo alto globalprotect
     # globalprotect-openconnect

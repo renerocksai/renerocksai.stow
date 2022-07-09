@@ -1,5 +1,5 @@
 configuration {
-    theme: "/home/rs/.config/rofi/purple.rasi";
+    /* theme: "/home/rs/.config/rofi/purple.rasi"; */
 	modi: "drun,run,ssh,filebrowser";
 /*	font: "mono 12";*/
 /*	location: 0;*/
@@ -145,3 +145,5 @@ cycle: false;
       sorting-method:    "name";
   }
 }
+
+    @theme "/home/rs/.config/rofi/purple.rasi"
