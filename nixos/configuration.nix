@@ -149,7 +149,7 @@
     libGL
     pkgs.gtk3
 
-    # broken. we solve it with conda
+    # broken. we solve it with nix-shells and poetry
     # (python3.withPackages(ps: [
     #   ps.python-lsp-server
     #   ps.pyls-mypy ps.pyls-isort ps.pyls-black ps.pyls-flake8
@@ -162,7 +162,8 @@
     cloc
 
     texlive.combined.scheme-full
-    smbclient
+    # NixOS 22.05: smbclient -> samba
+    samba
     audacity
     
     kicad
