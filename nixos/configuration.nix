@@ -200,7 +200,9 @@
 
     signal-desktop
 
-    aerc
+    aerc w3m dante
+    cmus
+
     
     # palo alto globalprotect
     # globalprotect-openconnect
