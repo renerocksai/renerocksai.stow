@@ -182,11 +182,6 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-"let g:airline_theme='coderene'
-":colorscheme codedark
-
-let g:gruvbox_material_background='medium'
-:colorscheme gruvbox-material
 
 command Term :term ++curwin
 command Vterm :vertical term
@@ -986,3 +981,13 @@ nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <space>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
  " Open code actions for the selected visual range
 xnoremap <space>ca <Cmd>lua vim.lsp.buf.range_code_action()<CR>
+
+
+if exists('g:started_by_firenvim')
+    set laststatus=2 
+    set nolazyredraw
+else 
+    set laststatus=2 
+    let g:gruvbox_material_background='medium'
+    colorscheme gruvbox-material
+endif
