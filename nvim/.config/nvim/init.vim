@@ -67,8 +67,8 @@ Plug 'kyuhi/vim-emoji-complete'
 Plug 'xiyaowong/telescope-emoji.nvim'
 
 " telekasten.nvim 
-Plug 'renerocksai/telekasten.nvim'
-Plug 'renerocksai/calendar-vim'
+Plug 'https://git.sr.ht/~renerocksai/telekasten.nvim'
+Plug 'https://git.sr.ht/~renerocksai/calendar-vim'
 "Plug 'mattn/calendar-vim'
 
 Plug 'renerocksai/jar-sdk-browser.nvim'
